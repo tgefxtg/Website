@@ -1,0 +1,1184 @@
+[
+  {
+    "id": "01",
+    "slug": "high-city",
+    "name": "High City",
+    "category": "Scenic Views",
+    "shortDescription": "Cloud-kissed views, hillside cafés, and a city that comes alive after sunset.",
+    "description": "Set among the mountains and valleys of Abha, High City brings together open views, cafés, restaurants and small shops. Take your time over a coffee, look out across the hills, and linger as the evening lights appear.",
+    "location": "Abha",
+    "image": "/images/destinations/high-city.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/high-city.webp",
+        "alt": "High City — photograph 1 from Aseer Explore",
+        "width": 456,
+        "height": 285
+      },
+      {
+        "src": "/images/destinations/high-city-2.webp",
+        "alt": "High City — photograph 2 from Aseer Explore",
+        "width": 419,
+        "height": 314
+      },
+      {
+        "src": "/images/destinations/high-city-3.webp",
+        "alt": "High City — photograph 3 from Aseer Explore",
+        "width": 410,
+        "height": 314
+      },
+      {
+        "src": "/images/destinations/high-city-4.webp",
+        "alt": "High City — photograph 4 from Aseer Explore",
+        "width": 422,
+        "height": 317
+      }
+    ],
+    "featured": true,
+    "mapUrl": "https://maps.app.goo.gl/nWZwWhHxBLSHk5fq6?g_st=im",
+    "tags": ["Scenic Views", "Nature", "Relaxation"],
+    "highlights": ["Mountain views", "Cafés and restaurants", "Evening lights"],
+    "sourcePage": 2
+  },
+  {
+    "id": "02",
+    "slug": "art-street",
+    "name": "Art Street",
+    "category": "Activities",
+    "shortDescription": "Jacaranda blossoms, local art, and the simple pleasure of a slow evening walk.",
+    "description": "Art Street is lined with jacaranda trees, local artworks and colourful decorations. The reference describes spring blossoms and a lively evening atmosphere, with places to stop for coffee or food. Arrive before sunset to see the street change from daylight to its illuminated evening scene.",
+    "location": "Abha",
+    "image": "/images/destinations/art-street.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/art-street.webp",
+        "alt": "Art Street — photograph 1 from Aseer Explore",
+        "width": 556,
+        "height": 310
+      },
+      {
+        "src": "/images/destinations/art-street-2.webp",
+        "alt": "Art Street — photograph 2 from Aseer Explore",
+        "width": 521,
+        "height": 346
+      },
+      {
+        "src": "/images/destinations/art-street-3.webp",
+        "alt": "Art Street — photograph 3 from Aseer Explore",
+        "width": 521,
+        "height": 351
+      },
+      {
+        "src": "/images/destinations/art-street-4.webp",
+        "alt": "Art Street — photograph 4 from Aseer Explore",
+        "width": 526,
+        "height": 311
+      }
+    ],
+    "featured": true,
+    "mapUrl": "https://maps.app.goo.gl/uzAMPo72tojTeNsK7",
+    "tags": ["Activities", "Family"],
+    "highlights": ["Jacaranda trees", "Local artworks", "Evening walks"],
+    "sourcePage": 3
+  },
+  {
+    "id": "03",
+    "slug": "al-sahab-park",
+    "name": "Al Sahab Park",
+    "category": "Parks",
+    "shortDescription": "Mountain ridgelines and drifting clouds. A front-row seat to a quieter world.",
+    "description": "Al Sahab Park opens onto mountain views, surrounding villages and the landscapes of Tihama. The reference describes wooded areas, shade and panoramic viewpoints. Clouds can transform the scenery, making this a place to slow down and let the view unfold.",
+    "location": "Aseer",
+    "image": "/images/destinations/al-sahab-park.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/al-sahab-park.webp",
+        "alt": "Al Sahab Park — photograph 1 from Aseer Explore",
+        "width": 769,
+        "height": 550
+      },
+      {
+        "src": "/images/destinations/al-sahab-park-2.webp",
+        "alt": "Al Sahab Park — photograph 2 from Aseer Explore",
+        "width": 494,
+        "height": 393
+      },
+      {
+        "src": "/images/destinations/al-sahab-park-3.webp",
+        "alt": "Al Sahab Park — photograph 3 from Aseer Explore",
+        "width": 579,
+        "height": 355
+      },
+      {
+        "src": "/images/destinations/al-sahab-park-4.webp",
+        "alt": "Al Sahab Park — photograph 4 from Aseer Explore",
+        "width": 414,
+        "height": 552
+      }
+    ],
+    "featured": true,
+    "mapUrl": "https://maps.app.goo.gl/VQY7zqy8VgvRWqqAA",
+    "tags": ["Parks", "Nature", "Family", "Relaxation"],
+    "highlights": [
+      "Panoramic viewpoints",
+      "Wooded scenery",
+      "Cloud-filled landscapes"
+    ],
+    "sourcePage": 4
+  },
+  {
+    "id": "04",
+    "slug": "tabab-lake",
+    "name": "Tabab Lake",
+    "category": "Dams",
+    "shortDescription": "Still water, birdsong, and a peaceful escape into the landscape.",
+    "description": "The reference places Tabab Lake along the Souda Road near Abha. It describes a quiet setting with greenery, birds and water when the dam is filled. Make room in your journey for a slower stop close to nature.",
+    "location": "Abha · Souda Road",
+    "image": "/images/destinations/tabab-lake.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/tabab-lake.webp",
+        "alt": "Tabab Lake — photograph 1 from Aseer Explore",
+        "width": 457,
+        "height": 339
+      },
+      {
+        "src": "/images/destinations/tabab-lake-2.webp",
+        "alt": "Tabab Lake — photograph 2 from Aseer Explore",
+        "width": 527,
+        "height": 337
+      },
+      {
+        "src": "/images/destinations/tabab-lake-3.webp",
+        "alt": "Tabab Lake — photograph 3 from Aseer Explore",
+        "width": 449,
+        "height": 337
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/Y1SKerQV56vCYPcDA",
+    "tags": ["Dams", "Nature", "Relaxation"],
+    "highlights": ["Lakeside scenery", "Birdwatching", "Quiet surroundings"],
+    "sourcePage": 5
+  },
+  {
+    "id": "05",
+    "slug": "rose-garden",
+    "name": "Rose Garden",
+    "category": "Nature",
+    "shortDescription": "A colourful garden made for unhurried walks and moments together.",
+    "description": "The Rose Garden brings together flowering plants and open garden spaces. The reference highlights spring blooms, photography and walks with family or friends. Flowering conditions vary, so ask about what is in bloom when planning your visit.",
+    "location": null,
+    "image": "/images/destinations/rose-garden.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/rose-garden.webp",
+        "alt": "Rose Garden — photograph 1 from Aseer Explore",
+        "width": 771,
+        "height": 455
+      },
+      {
+        "src": "/images/destinations/rose-garden-2.webp",
+        "alt": "Rose Garden — photograph 2 from Aseer Explore",
+        "width": 700,
+        "height": 364
+      },
+      {
+        "src": "/images/destinations/rose-garden-3.webp",
+        "alt": "Rose Garden — photograph 3 from Aseer Explore",
+        "width": 547,
+        "height": 404
+      },
+      {
+        "src": "/images/destinations/rose-garden-4.webp",
+        "alt": "Rose Garden — photograph 4 from Aseer Explore",
+        "width": 399,
+        "height": 394
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/XZo3oLuYuft2KDFQA",
+    "tags": ["Nature", "Family", "Relaxation"],
+    "highlights": ["Flower gardens", "Photography", "Family walks"],
+    "sourcePage": 6,
+    "ticketPrice": {
+      "amount": 25,
+      "currency": "SAR",
+      "unit": "per person"
+    }
+  },
+  {
+    "id": "06",
+    "slug": "al-habla-mountain",
+    "name": "Al Habla Mountain",
+    "category": "Mountains",
+    "shortDescription": "Dramatic cliffs, wide-open valleys, and a mountain escape with a sense of wonder.",
+    "description": "Al Habla is a mountain village destination in Aseer. The reference describes cliffside scenery, valley viewpoints and a cable-car experience. Ask about current access and available activities before arranging a visit.",
+    "location": "Aseer",
+    "image": "/images/destinations/al-habla-mountain.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/al-habla-mountain.webp",
+        "alt": "Al Habla Mountain — photograph 1 from Aseer Explore",
+        "width": 640,
+        "height": 306
+      },
+      {
+        "src": "/images/destinations/al-habla-mountain-2.webp",
+        "alt": "Al Habla Mountain — photograph 2 from Aseer Explore",
+        "width": 601,
+        "height": 337
+      },
+      {
+        "src": "/images/destinations/al-habla-mountain-3.webp",
+        "alt": "Al Habla Mountain — photograph 3 from Aseer Explore",
+        "width": 611,
+        "height": 460
+      },
+      {
+        "src": "/images/destinations/al-habla-mountain-4.webp",
+        "alt": "Al Habla Mountain — photograph 4 from Aseer Explore",
+        "width": 403,
+        "height": 465
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/MdJuQs3vNbnB7Zxi6?g_st=im",
+    "tags": ["Mountains", "Nature", "Adventure", "Scenic Views"],
+    "highlights": [
+      "Cliffside scenery",
+      "Valley viewpoints",
+      "Mountain village"
+    ],
+    "sourcePage": 7
+  },
+  {
+    "id": "07",
+    "slug": "rijal-alma",
+    "name": "Rijal Alma Museum (Heritage Village)",
+    "category": "Heritage",
+    "shortDescription": "Stone towers, mountain backdrops, and the enduring character of Aseer.",
+    "description": "Rijal Alma brings together multi-storey buildings made from stone, clay and wood. Its heritage museum was created through local efforts to preserve the region’s traditions. Explore the village’s architecture and the details that make this mountain setting distinctive.",
+    "location": "Rijal Almaa · Aseer",
+    "image": "/images/destinations/rijal-alma.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/rijal-alma.webp",
+        "alt": "Rijal Alma Museum (Heritage Village) — photograph 1 from Aseer Explore",
+        "width": 520,
+        "height": 346
+      },
+      {
+        "src": "/images/destinations/rijal-alma-2.webp",
+        "alt": "Rijal Alma Museum (Heritage Village) — photograph 2 from Aseer Explore",
+        "width": 516,
+        "height": 345
+      },
+      {
+        "src": "/images/destinations/rijal-alma-3.webp",
+        "alt": "Rijal Alma Museum (Heritage Village) — photograph 3 from Aseer Explore",
+        "width": 438,
+        "height": 584
+      },
+      {
+        "src": "/images/destinations/rijal-alma-4.webp",
+        "alt": "Rijal Alma Museum (Heritage Village) — photograph 4 from Aseer Explore",
+        "width": 440,
+        "height": 587
+      }
+    ],
+    "featured": true,
+    "mapUrl": "https://maps.app.goo.gl/kD33JkQR3v6M96R38",
+    "tags": ["Heritage", "Family"],
+    "highlights": [
+      "Traditional architecture",
+      "Heritage museum",
+      "Stone-built village"
+    ],
+    "sourcePage": 8
+  },
+  {
+    "id": "08",
+    "slug": "bees-tower",
+    "name": "Bees Tower Honey Refinery",
+    "category": "Farms",
+    "shortDescription": "A distinctive honey cottage surrounded by green mountain scenery.",
+    "description": "The reference describes Bees Tower as a honey refinery in Rijal Almaa, with a distinctive hut and windmill design. Its mountain surroundings and honey displays offer a different way to experience the region. Ask the team about visiting arrangements.",
+    "location": "Rijal Almaa · Aseer",
+    "image": "/images/destinations/bees-tower.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/bees-tower.webp",
+        "alt": "Bees Tower Honey Refinery — photograph 1 from Aseer Explore",
+        "width": 647,
+        "height": 453
+      },
+      {
+        "src": "/images/destinations/bees-tower-2.webp",
+        "alt": "Bees Tower Honey Refinery — photograph 2 from Aseer Explore",
+        "width": 669,
+        "height": 532
+      },
+      {
+        "src": "/images/destinations/bees-tower-3.webp",
+        "alt": "Bees Tower Honey Refinery — photograph 3 from Aseer Explore",
+        "width": 428,
+        "height": 480
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/VgpkAPRnXcvTC8fZ7",
+    "tags": ["Farms", "Nature", "Family", "Relaxation"],
+    "highlights": [
+      "Honey displays",
+      "Distinctive architecture",
+      "Mountain surroundings"
+    ],
+    "sourcePage": 9
+  },
+  {
+    "id": "09",
+    "slug": "rijal-castle",
+    "name": "Rijal Castle",
+    "category": "Heritage",
+    "shortDescription": "Stone walls framed by the green folds of the mountains.",
+    "description": "Discover Rijal Castle, a heritage stop included in the Aseer Explore collection. The reference photographs show stone structures in a mountain setting. Ask Abha Tourist Center about access and how to include the castle in your journey.",
+    "location": "Rijal Alma",
+    "image": "/images/destinations/rijal-castle.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/rijal-castle.webp",
+        "alt": "Rijal Castle — photograph 1 from Aseer Explore",
+        "width": 729,
+        "height": 528
+      },
+      {
+        "src": "/images/destinations/rijal-castle-2.webp",
+        "alt": "Rijal Castle — photograph 2 from Aseer Explore",
+        "width": 687,
+        "height": 431
+      },
+      {
+        "src": "/images/destinations/rijal-castle-3.webp",
+        "alt": "Rijal Castle — photograph 3 from Aseer Explore",
+        "width": 729,
+        "height": 534
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/VGVKZsPm8gWbmxeGA",
+    "tags": ["Heritage", "Family"],
+    "highlights": [
+      "Stone architecture",
+      "Mountain setting",
+      "Heritage discovery"
+    ],
+    "sourcePage": 10
+  },
+  {
+    "id": "10",
+    "slug": "strawberry-farm",
+    "name": "The Strawberry Farm",
+    "category": "Farms",
+    "shortDescription": "Fresh strawberries and a farm visit to share with the family.",
+    "description": "The reference describes this as a family-friendly place where visitors can explore strawberry picking. Ask about the growing season, fruit availability and visit arrangements before you go.",
+    "location": null,
+    "image": "/images/destinations/strawberry-farm.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/strawberry-farm.webp",
+        "alt": "The Strawberry Farm — photograph 1 from Aseer Explore",
+        "width": 584,
+        "height": 434
+      },
+      {
+        "src": "/images/destinations/strawberry-farm-2.webp",
+        "alt": "The Strawberry Farm — photograph 2 from Aseer Explore",
+        "width": 346,
+        "height": 429
+      },
+      {
+        "src": "/images/destinations/strawberry-farm-3.webp",
+        "alt": "The Strawberry Farm — photograph 3 from Aseer Explore",
+        "width": 477,
+        "height": 433
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/qsZp7as9Qi5JgKow7",
+    "tags": ["Farms", "Nature", "Family", "Relaxation"],
+    "highlights": ["Strawberries", "Family outing", "Farm setting"],
+    "sourcePage": 11
+  },
+  {
+    "id": "11",
+    "slug": "horse-ride-and-majlis",
+    "name": "Horse Ride and Majlis",
+    "category": "Activities",
+    "shortDescription": "An active afternoon with horses, outdoor pursuits, and a café stop.",
+    "description": "The reference lists walking, horse riding and archery, alongside a café. Ask which activities are currently available and suitable for your group when planning your visit.",
+    "location": null,
+    "image": "/images/destinations/horse-ride-and-majlis.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/horse-ride-and-majlis.webp",
+        "alt": "Horse Ride and Majlis — photograph 1 from Aseer Explore",
+        "width": 599,
+        "height": 433
+      },
+      {
+        "src": "/images/destinations/horse-ride-and-majlis-2.webp",
+        "alt": "Horse Ride and Majlis — photograph 2 from Aseer Explore",
+        "width": 453,
+        "height": 429
+      },
+      {
+        "src": "/images/destinations/horse-ride-and-majlis-3.webp",
+        "alt": "Horse Ride and Majlis — photograph 3 from Aseer Explore",
+        "width": 421,
+        "height": 428
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/QFLVQF4hnumrJFsc9?g_st=im",
+    "tags": ["Activities", "Family"],
+    "highlights": ["Horse riding", "Archery", "Café"],
+    "sourcePage": 11
+  },
+  {
+    "id": "12",
+    "slug": "jabal-tha",
+    "name": "جبل ثاة",
+    "category": "Mountains",
+    "shortDescription": "A mountain adventure with sweeping views and a challenging approach.",
+    "description": "This mountain destination offers views of the surrounding slopes. The reference notes a difficult approach with steep inclines and sharp bends. Ask the team about current road conditions, suitable transport and access before planning the journey.",
+    "location": null,
+    "image": "/images/destinations/jabal-tha.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/jabal-tha.webp",
+        "alt": "جبل ثاة — photograph 1 from Aseer Explore",
+        "width": 403,
+        "height": 417
+      },
+      {
+        "src": "/images/destinations/jabal-tha-2.webp",
+        "alt": "جبل ثاة — photograph 2 from Aseer Explore",
+        "width": 522,
+        "height": 408
+      },
+      {
+        "src": "/images/destinations/jabal-tha-3.webp",
+        "alt": "جبل ثاة — photograph 3 from Aseer Explore",
+        "width": 499,
+        "height": 381
+      },
+      {
+        "src": "/images/destinations/jabal-tha-4.webp",
+        "alt": "جبل ثاة — photograph 4 from Aseer Explore",
+        "width": 630,
+        "height": 412
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/NKFHknuvGLSMhyvm9",
+    "tags": ["Mountains", "Nature", "Adventure", "Scenic Views"],
+    "highlights": [
+      "Mountain views",
+      "Challenging approach",
+      "Outdoor adventure"
+    ],
+    "sourcePage": 12,
+    "arabicName": "جبل ثاة"
+  },
+  {
+    "id": "13",
+    "slug": "the-vineyard",
+    "name": "The Vineyard (Grape Farm)",
+    "category": "Farms",
+    "shortDescription": "Leafy pathways, grapevines, and an invitation to take the slow road.",
+    "description": "The Vineyard offers a farm setting with fruit trees, plants, flowers and herbs. The reference describes it as a place to relax away from city life. Ask about seasonal grapes and current visiting arrangements.",
+    "location": null,
+    "image": "/images/destinations/the-vineyard.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/the-vineyard.webp",
+        "alt": "The Vineyard (Grape Farm) — photograph 1 from Aseer Explore",
+        "width": 594,
+        "height": 445
+      },
+      {
+        "src": "/images/destinations/the-vineyard-2.webp",
+        "alt": "The Vineyard (Grape Farm) — photograph 2 from Aseer Explore",
+        "width": 345,
+        "height": 445
+      },
+      {
+        "src": "/images/destinations/the-vineyard-3.webp",
+        "alt": "The Vineyard (Grape Farm) — photograph 3 from Aseer Explore",
+        "width": 483,
+        "height": 360
+      },
+      {
+        "src": "/images/destinations/the-vineyard-4.webp",
+        "alt": "The Vineyard (Grape Farm) — photograph 4 from Aseer Explore",
+        "width": 463,
+        "height": 443
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/hwZP3HDgkGbZoHUE6",
+    "tags": ["Farms", "Nature", "Family", "Relaxation"],
+    "highlights": ["Grapevines", "Fruit trees", "Garden setting"],
+    "sourcePage": 13,
+    "ticketPrice": {
+      "amount": 20,
+      "currency": "SAR",
+      "unit": "per person"
+    }
+  },
+  {
+    "id": "14",
+    "slug": "thandaha-dam",
+    "name": "Thandaha Dam",
+    "category": "Dams",
+    "shortDescription": "Open water and quiet shores for a change of pace.",
+    "description": "The reference describes Thandaha Dam as a peaceful stop near Khamis Mushait and mentions camping. Ask about current access, water conditions and permitted activities when planning time by the water.",
+    "location": "Near Khamis Mushait",
+    "image": "/images/destinations/thandaha-dam.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/thandaha-dam.webp",
+        "alt": "Thandaha Dam — photograph 1 from Aseer Explore",
+        "width": 541,
+        "height": 403
+      },
+      {
+        "src": "/images/destinations/thandaha-dam-2.webp",
+        "alt": "Thandaha Dam — photograph 2 from Aseer Explore",
+        "width": 568,
+        "height": 315
+      },
+      {
+        "src": "/images/destinations/thandaha-dam-3.webp",
+        "alt": "Thandaha Dam — photograph 3 from Aseer Explore",
+        "width": 542,
+        "height": 399
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/TUHgUxXpjCDW3mCW8",
+    "tags": ["Dams", "Nature", "Relaxation"],
+    "highlights": ["Water views", "Open landscape", "Peaceful setting"],
+    "sourcePage": 14
+  },
+  {
+    "id": "15",
+    "slug": "raspberry-farm-abha",
+    "name": "Raspberry Farm Abha",
+    "category": "Farms",
+    "shortDescription": "A fruit-farm stop for a different side of Abha.",
+    "description": "Raspberry Farm Abha is included in the supplied destination collection. Browse the reference photographs and ask the team about the fruit season, current availability and visiting arrangements.",
+    "location": "Abha",
+    "image": "/images/destinations/raspberry-farm-abha.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/raspberry-farm-abha.webp",
+        "alt": "Raspberry Farm Abha — photograph 1 from Aseer Explore",
+        "width": 504,
+        "height": 366
+      },
+      {
+        "src": "/images/destinations/raspberry-farm-abha-2.webp",
+        "alt": "Raspberry Farm Abha — photograph 2 from Aseer Explore",
+        "width": 515,
+        "height": 367
+      },
+      {
+        "src": "/images/destinations/raspberry-farm-abha-3.webp",
+        "alt": "Raspberry Farm Abha — photograph 3 from Aseer Explore",
+        "width": 526,
+        "height": 506
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/SHNubcSnAYsTp7g47",
+    "tags": ["Farms", "Nature", "Family", "Relaxation"],
+    "highlights": ["Fruit farm", "Seasonal produce", "Farm discovery"],
+    "sourcePage": 15
+  },
+  {
+    "id": "16",
+    "slug": "al-masqi-park",
+    "name": "منتزة المسقي",
+    "category": "Parks",
+    "shortDescription": "Green surroundings and seating areas for a relaxed pause outdoors.",
+    "description": "The reference describes a park with seating areas. Its photographs show an open, green landscape and places to spend time outside. Ask the team about visiting and suitable stops nearby.",
+    "location": null,
+    "image": "/images/destinations/al-masqi-park.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/al-masqi-park.webp",
+        "alt": "منتزة المسقي — photograph 1 from Aseer Explore",
+        "width": 477,
+        "height": 321
+      },
+      {
+        "src": "/images/destinations/al-masqi-park-2.webp",
+        "alt": "منتزة المسقي — photograph 2 from Aseer Explore",
+        "width": 447,
+        "height": 389
+      },
+      {
+        "src": "/images/destinations/al-masqi-park-3.webp",
+        "alt": "منتزة المسقي — photograph 3 from Aseer Explore",
+        "width": 532,
+        "height": 383
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/ZKng8u4KBwpHCyx88",
+    "tags": ["Parks", "Nature", "Family", "Relaxation"],
+    "highlights": ["Outdoor seating", "Green surroundings", "Relaxed outing"],
+    "sourcePage": 16,
+    "arabicName": "منتزة المسقي"
+  },
+  {
+    "id": "17",
+    "slug": "strawberry-farm-maski",
+    "name": "Strawberry Farm Maski",
+    "category": "Farms",
+    "shortDescription": "Strawberries and a slower kind of day in Maski.",
+    "description": "This strawberry farm in Maski is included in the reference collection. Ask about the fruit season and what is available during your planned visit.",
+    "location": "Maski",
+    "image": "/images/destinations/strawberry-farm-maski.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/strawberry-farm-maski.webp",
+        "alt": "Strawberry Farm Maski — photograph 1 from Aseer Explore",
+        "width": 460,
+        "height": 418
+      },
+      {
+        "src": "/images/destinations/strawberry-farm-maski-2.webp",
+        "alt": "Strawberry Farm Maski — photograph 2 from Aseer Explore",
+        "width": 481,
+        "height": 418
+      },
+      {
+        "src": "/images/destinations/strawberry-farm-maski-3.webp",
+        "alt": "Strawberry Farm Maski — photograph 3 from Aseer Explore",
+        "width": 527,
+        "height": 393
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/APv88kENJcs1NUJm6",
+    "tags": ["Farms", "Nature", "Family", "Relaxation"],
+    "highlights": ["Strawberries", "Farm scenery", "Seasonal visit"],
+    "sourcePage": 17
+  },
+  {
+    "id": "18",
+    "slug": "strawberry-farm-sudha",
+    "name": "Strawberry Farm near Sahab Park Sudha",
+    "category": "Farms",
+    "shortDescription": "Strawberries with a mountain view and a sunset worth staying for.",
+    "description": "The reference highlights mountain views and sunset scenery at this strawberry farm near Sahab Park. Combine your interest in farms and mountain landscapes, and ask about fruit availability before visiting.",
+    "location": "Near Sahab Park · Sudha",
+    "image": "/images/destinations/strawberry-farm-sudha.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/strawberry-farm-sudha.webp",
+        "alt": "Strawberry Farm near Sahab Park Sudha — photograph 1 from Aseer Explore",
+        "width": 497,
+        "height": 373
+      },
+      {
+        "src": "/images/destinations/strawberry-farm-sudha-2.webp",
+        "alt": "Strawberry Farm near Sahab Park Sudha — photograph 2 from Aseer Explore",
+        "width": 499,
+        "height": 390
+      },
+      {
+        "src": "/images/destinations/strawberry-farm-sudha-3.webp",
+        "alt": "Strawberry Farm near Sahab Park Sudha — photograph 3 from Aseer Explore",
+        "width": 499,
+        "height": 376
+      },
+      {
+        "src": "/images/destinations/strawberry-farm-sudha-4.webp",
+        "alt": "Strawberry Farm near Sahab Park Sudha — photograph 4 from Aseer Explore",
+        "width": 504,
+        "height": 394
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/2nuyvMpLbYugyEsK7",
+    "tags": ["Farms", "Nature", "Family", "Relaxation"],
+    "highlights": ["Strawberries", "Mountain views", "Sunset scenery"],
+    "sourcePage": 18
+  },
+  {
+    "id": "19",
+    "slug": "atoud-dam",
+    "name": "Atoud Dam Khamis",
+    "category": "Dams",
+    "shortDescription": "A waterside pause in the heart of Khamis Mushait.",
+    "description": "Atoud Dam is described in the reference as a dam within Khamis Mushait, with open views over the water. Ask the team about current access and how it fits into a day around the city.",
+    "location": "Khamis Mushait",
+    "image": "/images/destinations/atoud-dam.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/atoud-dam.webp",
+        "alt": "Atoud Dam Khamis — photograph 1 from Aseer Explore",
+        "width": 776,
+        "height": 454
+      },
+      {
+        "src": "/images/destinations/atoud-dam-2.webp",
+        "alt": "Atoud Dam Khamis — photograph 2 from Aseer Explore",
+        "width": 762,
+        "height": 449
+      },
+      {
+        "src": "/images/destinations/atoud-dam-3.webp",
+        "alt": "Atoud Dam Khamis — photograph 3 from Aseer Explore",
+        "width": 782,
+        "height": 456
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/TrpU1XGqmUkRCrPbA",
+    "tags": ["Dams", "Nature", "Relaxation"],
+    "highlights": ["Water views", "City location", "Scenic stop"],
+    "sourcePage": 19
+  },
+  {
+    "id": "20",
+    "slug": "lavender-park",
+    "name": "Lavender Park Khamis",
+    "category": "Parks",
+    "shortDescription": "Space to play, walk, and spend time together outdoors.",
+    "description": "The reference describes a spacious park with trees, children’s play areas and football grounds. It also mentions parking and places for groups to gather. Ask about current facilities before visiting.",
+    "location": "Khamis Mushait",
+    "image": "/images/destinations/lavender-park.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/lavender-park.webp",
+        "alt": "Lavender Park Khamis — photograph 1 from Aseer Explore",
+        "width": 442,
+        "height": 390
+      },
+      {
+        "src": "/images/destinations/lavender-park-2.webp",
+        "alt": "Lavender Park Khamis — photograph 2 from Aseer Explore",
+        "width": 449,
+        "height": 412
+      },
+      {
+        "src": "/images/destinations/lavender-park-3.webp",
+        "alt": "Lavender Park Khamis — photograph 3 from Aseer Explore",
+        "width": 415,
+        "height": 389
+      },
+      {
+        "src": "/images/destinations/lavender-park-4.webp",
+        "alt": "Lavender Park Khamis — photograph 4 from Aseer Explore",
+        "width": 445,
+        "height": 391
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/pvpiysVovcs4zUs67",
+    "tags": ["Parks", "Nature", "Family", "Relaxation"],
+    "highlights": [
+      "Children’s play areas",
+      "Football grounds",
+      "Outdoor spaces"
+    ],
+    "sourcePage": 20
+  },
+  {
+    "id": "21",
+    "slug": "mazra-thoth-aswad",
+    "name": "Mazra Thoth Aswad",
+    "category": "Farms",
+    "shortDescription": "Leafy paths, birdsong, and a gentle afternoon at the farm.",
+    "description": "The reference describes a farm and resort with comfortable seating, birdsong and a fountain. It lists a café, restaurants and a children’s play area, making this a stop to consider for a relaxed family day.",
+    "location": null,
+    "image": "/images/destinations/mazra-thoth-aswad.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/mazra-thoth-aswad.webp",
+        "alt": "Mazra Thoth Aswad — photograph 1 from Aseer Explore",
+        "width": 324,
+        "height": 484
+      },
+      {
+        "src": "/images/destinations/mazra-thoth-aswad-2.webp",
+        "alt": "Mazra Thoth Aswad — photograph 2 from Aseer Explore",
+        "width": 330,
+        "height": 482
+      },
+      {
+        "src": "/images/destinations/mazra-thoth-aswad-3.webp",
+        "alt": "Mazra Thoth Aswad — photograph 3 from Aseer Explore",
+        "width": 376,
+        "height": 483
+      },
+      {
+        "src": "/images/destinations/mazra-thoth-aswad-4.webp",
+        "alt": "Mazra Thoth Aswad — photograph 4 from Aseer Explore",
+        "width": 314,
+        "height": 360
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/5ZygoBex9wUSCW3Y9?g_st=im",
+    "tags": ["Farms", "Nature", "Family", "Relaxation"],
+    "highlights": [
+      "Leafy pathways",
+      "Café and restaurants",
+      "Children’s play area"
+    ],
+    "sourcePage": 21,
+    "arabicName": "منتجع ومزرعة التوت الأسود",
+    "ticketPrice": {
+      "amount": 15,
+      "currency": "SAR",
+      "unit": "per person, afternoon",
+      "note": "The reference lists free morning entry."
+    }
+  },
+  {
+    "id": "22",
+    "slug": "rijal-alma-waterfalls",
+    "name": "Water Falls – Rijal Alma",
+    "category": "Waterfalls",
+    "shortDescription": "Flowing water and rocky scenery for a refreshing nature stop.",
+    "description": "The reference presents these waterfalls as a place to visit with family or friends and mentions vehicle parking. Water flow and access can vary; ask about current conditions before setting out.",
+    "location": "Rijal Alma",
+    "image": "/images/destinations/rijal-alma-waterfalls.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/rijal-alma-waterfalls.webp",
+        "alt": "Water Falls – Rijal Alma — photograph 1 from Aseer Explore",
+        "width": 481,
+        "height": 765
+      },
+      {
+        "src": "/images/destinations/rijal-alma-waterfalls-2.webp",
+        "alt": "Water Falls – Rijal Alma — photograph 2 from Aseer Explore",
+        "width": 453,
+        "height": 765
+      },
+      {
+        "src": "/images/destinations/rijal-alma-waterfalls-3.webp",
+        "alt": "Water Falls – Rijal Alma — photograph 3 from Aseer Explore",
+        "width": 484,
+        "height": 763
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/aku4tWBCiSWtXL5J7?g_st=im",
+    "tags": ["Waterfalls", "Nature", "Adventure"],
+    "highlights": ["Waterfall scenery", "Nature stop", "Rocky landscape"],
+    "sourcePage": 22
+  },
+  {
+    "id": "23",
+    "slug": "the-summer-gathering",
+    "name": "The Summer Gathering",
+    "category": "Family",
+    "shortDescription": "Food, crafts, activities, and an evening full of light.",
+    "description": "The Summer Gathering brings together activity areas, restaurants, cafés and crafts. The reference also mentions a horse track and decorative night lighting. Ask about its current operating season and available activities.",
+    "location": null,
+    "image": "/images/destinations/the-summer-gathering.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/the-summer-gathering.webp",
+        "alt": "The Summer Gathering — photograph 1 from Aseer Explore",
+        "width": 978,
+        "height": 552
+      },
+      {
+        "src": "/images/destinations/the-summer-gathering-2.webp",
+        "alt": "The Summer Gathering — photograph 2 from Aseer Explore",
+        "width": 389,
+        "height": 557
+      },
+      {
+        "src": "/images/destinations/the-summer-gathering-3.webp",
+        "alt": "The Summer Gathering — photograph 3 from Aseer Explore",
+        "width": 418,
+        "height": 553
+      }
+    ],
+    "featured": false,
+    "mapUrl": null,
+    "tags": ["Family", "Activities"],
+    "highlights": ["Restaurants and cafés", "Crafts", "Evening lights"],
+    "sourcePage": 23,
+    "arabicName": "وسمره صيف"
+  },
+  {
+    "id": "24",
+    "slug": "fog-walkway",
+    "name": "The Fog Walkway (Dabab Walk Way)",
+    "category": "Scenic Views",
+    "shortDescription": "An evening walk with mountain air and views into the clouds.",
+    "description": "The reference highlights the Fog Walkway’s mountain scenery, fresh air and evening atmosphere. Clouds and visibility change with the weather, giving each visit its own character.",
+    "location": null,
+    "image": "/images/destinations/fog-walkway.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/fog-walkway.webp",
+        "alt": "The Fog Walkway (Dabab Walk Way) — photograph 1 from Aseer Explore",
+        "width": 302,
+        "height": 167
+      },
+      {
+        "src": "/images/destinations/fog-walkway-2.webp",
+        "alt": "The Fog Walkway (Dabab Walk Way) — photograph 2 from Aseer Explore",
+        "width": 293,
+        "height": 172
+      },
+      {
+        "src": "/images/destinations/fog-walkway-3.webp",
+        "alt": "The Fog Walkway (Dabab Walk Way) — photograph 3 from Aseer Explore",
+        "width": 306,
+        "height": 165
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/RV1G9cuNboxfz8o76?g_st=im",
+    "tags": ["Scenic Views", "Nature", "Relaxation"],
+    "highlights": ["Mountain views", "Walking", "Evening scenery"],
+    "sourcePage": 24
+  },
+  {
+    "id": "25",
+    "slug": "al-makhd-mosque",
+    "name": "200 Years Old Masjid",
+    "category": "Heritage",
+    "shortDescription": "A heritage mosque and village included in the Aseer Explore collection.",
+    "description": "Visit a mosque and village known in the reference as “200 Years Old Masjid”. Its photographs show traditional building details. Ask the team about visiting arrangements and respect local worship and access requirements.",
+    "location": null,
+    "image": "/images/destinations/al-makhd-mosque.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/al-makhd-mosque.webp",
+        "alt": "200 Years Old Masjid — photograph 1 from Aseer Explore",
+        "width": 366,
+        "height": 484
+      },
+      {
+        "src": "/images/destinations/al-makhd-mosque-2.webp",
+        "alt": "200 Years Old Masjid — photograph 2 from Aseer Explore",
+        "width": 370,
+        "height": 484
+      },
+      {
+        "src": "/images/destinations/al-makhd-mosque-3.webp",
+        "alt": "200 Years Old Masjid — photograph 3 from Aseer Explore",
+        "width": 376,
+        "height": 487
+      },
+      {
+        "src": "/images/destinations/al-makhd-mosque-4.webp",
+        "alt": "200 Years Old Masjid — photograph 4 from Aseer Explore",
+        "width": 384,
+        "height": 477
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/GQXfgEk23AJS3akq7?g_st=im",
+    "tags": ["Heritage", "Family"],
+    "highlights": [
+      "Heritage architecture",
+      "Village setting",
+      "Cultural discovery"
+    ],
+    "sourcePage": 25,
+    "arabicName": "مسجد وقرية المخض الاثرية"
+  },
+  {
+    "id": "26",
+    "slug": "silent-valley-hills",
+    "name": "Silent Valley Hills",
+    "category": "Mountains",
+    "shortDescription": "A mountain destination for your next Aseer itinerary.",
+    "description": "Silent Valley Hills is listed in the supplied collection. Ask Abha Tourist Center for photographs, access details and advice on including it in your journey.",
+    "location": null,
+    "image": null,
+    "gallery": [],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/ZHbGxHLC9EPNb9tP9?g_st=im",
+    "tags": ["Mountains", "Nature", "Adventure", "Scenic Views"],
+    "highlights": ["Mountain destination", "Journey planning"],
+    "sourcePage": 26
+  },
+  {
+    "id": "27",
+    "slug": "al-muftaha-art-village",
+    "name": "Al Muftaha Art Village",
+    "category": "Heritage",
+    "shortDescription": "Local art, murals, and traditional architecture in one colourful setting.",
+    "description": "The reference describes a collection of works by local artists, traditional architecture and murals. Explore the relationship between Aseer’s built heritage and its contemporary creative expression.",
+    "location": null,
+    "image": "/images/destinations/al-muftaha-art-village.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/al-muftaha-art-village.webp",
+        "alt": "Al Muftaha Art Village — photograph 1 from Aseer Explore",
+        "width": 765,
+        "height": 482
+      },
+      {
+        "src": "/images/destinations/al-muftaha-art-village-2.webp",
+        "alt": "Al Muftaha Art Village — photograph 2 from Aseer Explore",
+        "width": 518,
+        "height": 483
+      },
+      {
+        "src": "/images/destinations/al-muftaha-art-village-3.webp",
+        "alt": "Al Muftaha Art Village — photograph 3 from Aseer Explore",
+        "width": 323,
+        "height": 484
+      },
+      {
+        "src": "/images/destinations/al-muftaha-art-village-4.webp",
+        "alt": "Al Muftaha Art Village — photograph 4 from Aseer Explore",
+        "width": 321,
+        "height": 483
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/h4fRdLhi9Uhf5TPa6?g_st=im",
+    "tags": ["Heritage", "Family"],
+    "highlights": ["Local artists", "Murals", "Traditional architecture"],
+    "sourcePage": 27,
+    "ticketPrice": {
+      "amount": 30,
+      "currency": "SAR",
+      "unit": "per person"
+    }
+  },
+  {
+    "id": "28",
+    "slug": "aseer-national-park",
+    "name": "Aseer National Park",
+    "category": "Parks",
+    "shortDescription": "Make room for an outdoor stop in your Aseer journey.",
+    "description": "Aseer National Park is included in the reference destination collection. Browse its supplied photographs and ask the team about the right stop for your interests, current access and facilities.",
+    "location": "Aseer",
+    "image": "/images/destinations/aseer-national-park.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/aseer-national-park.webp",
+        "alt": "Aseer National Park — photograph 1 from Aseer Explore",
+        "width": 568,
+        "height": 424
+      },
+      {
+        "src": "/images/destinations/aseer-national-park-2.webp",
+        "alt": "Aseer National Park — photograph 2 from Aseer Explore",
+        "width": 559,
+        "height": 423
+      },
+      {
+        "src": "/images/destinations/aseer-national-park-3.webp",
+        "alt": "Aseer National Park — photograph 3 from Aseer Explore",
+        "width": 428,
+        "height": 640
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/FgnAsWJnSSFCqn4h6?g_st=im",
+    "tags": ["Parks", "Nature", "Family", "Relaxation"],
+    "highlights": ["Outdoor discovery", "Park visit", "Aseer scenery"],
+    "sourcePage": 28
+  },
+  {
+    "id": "29",
+    "slug": "wadi-lajab",
+    "name": "Wadi Lajab Water Falls",
+    "category": "Adventure",
+    "shortDescription": "A dramatic canyon, fresh water, and a journey into the extraordinary.",
+    "description": "Wadi Lajab is a natural destination in Jazan, beyond the Aseer region. The reference describes fresh water, an off-road approach and opportunities for trekking among the rocks. Ask about weather, access and suitability for your group before planning this adventure.",
+    "location": "Jazan · Beyond Aseer",
+    "image": "/images/destinations/wadi-lajab.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/wadi-lajab.webp",
+        "alt": "Wadi Lajab Water Falls — photograph 1 from Aseer Explore",
+        "width": 692,
+        "height": 489
+      },
+      {
+        "src": "/images/destinations/wadi-lajab-2.webp",
+        "alt": "Wadi Lajab Water Falls — photograph 2 from Aseer Explore",
+        "width": 387,
+        "height": 510
+      },
+      {
+        "src": "/images/destinations/wadi-lajab-3.webp",
+        "alt": "Wadi Lajab Water Falls — photograph 3 from Aseer Explore",
+        "width": 385,
+        "height": 489
+      },
+      {
+        "src": "/images/destinations/wadi-lajab-4.webp",
+        "alt": "Wadi Lajab Water Falls — photograph 4 from Aseer Explore",
+        "width": 397,
+        "height": 513
+      }
+    ],
+    "featured": true,
+    "mapUrl": "https://maps.app.goo.gl/Pv2jcrkad7EpP6Nt5?g_st=im",
+    "tags": ["Adventure", "Nature", "Mountains", "Waterfalls"],
+    "highlights": ["Canyon scenery", "Freshwater pools", "Trekking"],
+    "sourcePage": 29
+  },
+  {
+    "id": "30",
+    "slug": "al-yanfa-village",
+    "name": "Al Yanfa Village Tamniah",
+    "category": "Heritage",
+    "shortDescription": "Traditional village details and another perspective on the region’s heritage.",
+    "description": "Al Yanfa Village Tamniah is included in the supplied destination collection. Its reference photographs show traditional architecture and village passages. Ask the team about access and how to include it in a heritage-focused day.",
+    "location": "Tamniah",
+    "image": "/images/destinations/al-yanfa-village.webp",
+    "gallery": [
+      {
+        "src": "/images/destinations/al-yanfa-village.webp",
+        "alt": "Al Yanfa Village Tamniah — photograph 1 from Aseer Explore",
+        "width": 426,
+        "height": 568
+      },
+      {
+        "src": "/images/destinations/al-yanfa-village-2.webp",
+        "alt": "Al Yanfa Village Tamniah — photograph 2 from Aseer Explore",
+        "width": 422,
+        "height": 563
+      },
+      {
+        "src": "/images/destinations/al-yanfa-village-3.webp",
+        "alt": "Al Yanfa Village Tamniah — photograph 3 from Aseer Explore",
+        "width": 424,
+        "height": 565
+      }
+    ],
+    "featured": false,
+    "mapUrl": "https://maps.app.goo.gl/VsvHrqijj4jJNLhUA?g_st=im",
+    "tags": ["Heritage", "Family"],
+    "highlights": [
+      "Traditional architecture",
+      "Village passages",
+      "Heritage discovery"
+    ],
+    "sourcePage": 30,
+    "arabicName": "قرية ال ينفع تمنية"
+  }
+]

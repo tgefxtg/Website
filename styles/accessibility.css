@@ -1,0 +1,164 @@
+/* Keep the small-print editorial rhythm readable on every viewport. */
+.eyebrow,
+.issue-label > span:last-child,
+.hero-photo-top,
+.hero-caption,
+.hero-footnote .eyebrow,
+.intro-stats span,
+.feature-story-copy > .eyebrow,
+.journey-header .eyebrow,
+.journey-card-title small,
+.card-copy > .eyebrow,
+.explorer-meta > span:last-child,
+.gallery-caption small,
+.form-heading .eyebrow,
+.detail-title-row .eyebrow,
+.ticket-information > .eyebrow,
+.about-image > span,
+.contact-intro > .eyebrow {
+  font-size: 12px;
+}
+.header-chat,
+.desktop-nav > a,
+.nav-plan,
+.hero-plan,
+.hero-editorial-chat,
+.hero-actions .button,
+.card-explore,
+.category-filters button,
+.search-field input,
+.interest-pills button,
+.planner-place strong,
+.planner-send .button,
+.feature-story-footer .text-link,
+.footer-top nav,
+.footer-location,
+.form-note,
+.back-link,
+.visit-card > .button,
+.contact-form label {
+  font-size: 14px;
+}
+.hero-content > p,
+.intro-columns p,
+.feature-story-copy > p,
+.card-copy > p,
+.experiences-heading > p,
+.experience-story p,
+.planner-heading > p,
+.about-copy p,
+.section-heading > p,
+.contact-intro p,
+.detail-title-row > p {
+  font-size: 16px;
+}
+.planner-place small,
+.planner-step small,
+.chosen-places button,
+.planner-send p,
+.footer-bottom,
+.hero-discovery small,
+.journey-chat,
+.feature-image-index,
+.ticket-information small,
+.visit-card > small {
+  font-size: 12px;
+}
+.planner-panel .button {
+  white-space: normal;
+}
+.hero-actions {
+  flex-wrap: wrap;
+}
+.hero-content h1 {
+  overflow-wrap: normal;
+}
+.header-chat {
+  white-space: nowrap;
+}
+.magazine-hero {
+  min-height: 800px;
+}
+.hero-content h1:lang(ar) {
+  font-family: "Noto Sans Arabic", sans-serif;
+}
+.journey-photo:focus-visible {
+  outline-offset: -5px;
+}
+.lightbox .icon-button {
+  color: white;
+}
+.gallery-image:focus-visible {
+  outline-offset: -5px;
+}
+@media (max-width: 1200px) {
+  .hero-footnote p {
+    font-size: 20px;
+  }
+  .hero-actions {
+    gap: 14px;
+  }
+  .hero-content h1 {
+    font-size: 8vw;
+  }
+}
+@media (max-width: 800px) {
+  .magazine-hero {
+    min-height: 0;
+  }
+  .hero-content h1 {
+    font-size: clamp(5rem, 13vw, 7rem);
+  }
+  .hero-caption {
+    font-size: 11px;
+  }
+  .hero-photo-top {
+    font-size: 12px;
+  }
+  .feature-story {
+    gap: 5%;
+  }
+  .feature-story-copy > p {
+    font-size: 15px;
+  }
+  .feature-story-footer > span {
+    font-size: 14px;
+  }
+}
+@media (max-width: 520px) {
+  .hero-content h1 {
+    font-size: clamp(4.2rem, 14vw, 5.3rem);
+  }
+  .hero-actions {
+    gap: 18px;
+  }
+  .hero-actions .button {
+    gap: 12px;
+    font-size: 14px;
+  }
+  .hero-actions .hero-plan {
+    font-size: 14px;
+  }
+  .hero-footnote {
+    display: none;
+  }
+  .hero-caption {
+    font-size: 10px;
+  }
+  .feature-story-copy > p {
+    font-size: 16px;
+  }
+  .planner-step small {
+    flex-basis: 100%;
+    margin-left: 25px;
+  }
+  .gallery-caption small {
+    font-size: 11px;
+  }
+  .mobile-enquiry {
+    font-size: 14px;
+  }
+  .form-note {
+    font-size: 12px;
+  }
+}

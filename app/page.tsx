@@ -1,0 +1,97 @@
+import { Hero } from "@/components/home/hero";
+import {
+  Introduction,
+  FeaturedStories,
+  HorizontalJourney,
+  Experiences,
+  About,
+} from "@/components/home/editorial";
+import { TripPlanner } from "@/components/home/trip-planner";
+import { Contact } from "@/components/home/contact";
+import { DestinationExplorer } from "@/components/destinations/explorer";
+import { Gallery } from "@/components/ui/gallery";
+import { Testimonials } from "@/components/ui/testimonials";
+import { destinations } from "@/data/destinations";
+import { site } from "@/lib/site";
+const gallery = [
+  destinations[6],
+  destinations[1],
+  destinations[28],
+  destinations[4],
+  destinations[12],
+  destinations[22],
+  destinations[2],
+  destinations[19],
+].map((d) => ({
+  src: d.image!,
+  alt: d.gallery[0].alt,
+  caption: d.id === "07" ? "Rijal Alma" : d.name,
+  category: d.category,
+}));
+export default function Home() {
+  return (
+    <main id="main">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "TravelAgency",
+            name: site.name,
+            url: site.url,
+            telephone: "+966536493716",
+            description: site.description,
+            areaServed: [
+              { "@type": "Place", name: "Abha" },
+              { "@type": "Place", name: "Aseer" },
+            ],
+          }),
+        }}
+      />
+      <Hero />
+      <Introduction />
+      <FeaturedStories />
+      <HorizontalJourney />
+      <section className="section discovery-section" id="destinations">
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">YOUR FIELD NOTES TO ASEER</span>
+            <h2>
+              Follow what
+              <br />
+              <em>moves you.</em>
+            </h2>
+          </div>
+          <p>
+            From a quiet farm to a dramatic canyon,
+            <br />
+            find the places that feel like you.
+          </p>
+        </div>
+        <DestinationExplorer compact />
+      </section>
+      <Experiences />
+      <TripPlanner />
+      <section className="section gallery-section" id="gallery">
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">A FEW MOMENTS, WORTH KEEPING</span>
+            <h2>
+              Wish you
+              <br />
+              were <em>here.</em>
+            </h2>
+          </div>
+          <p>
+            A little colour. A little wonder.
+            <br />A place in every frame.
+          </p>
+        </div>
+        <Gallery items={gallery} />
+      </section>
+      <About />
+      <Testimonials />
+      <Contact />
+    </main>
+  );
+}

@@ -1,0 +1,10 @@
+node_modules/
+.next/
+out/
+tmp/
+.env*
+!.env.example
+*.tsbuildinfo
+.sites-runtime/
+*.tar.gz
+*.log
