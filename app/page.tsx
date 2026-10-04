@@ -1,4 +1,5 @@
 import { Hero } from "@/components/home/hero";
+import { MountainScene } from "@/components/home/mountain-scene";
 import {
   Introduction,
   FeaturedStories,
@@ -50,6 +51,7 @@ export default function Home() {
       />
       <Hero />
       <Introduction />
+      <MountainScene />
       <FeaturedStories />
       <HorizontalJourney />
       <section className="section discovery-section" id="destinations">

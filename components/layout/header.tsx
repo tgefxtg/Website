@@ -6,7 +6,7 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Brand } from "./brand";
 import { WhatsAppLink } from "../ui/whatsapp-link";
 const links = [
-  ["Home", "/"],
+  ["Home", "/#main"],
   ["Destinations", "/destinations/"],
   ["Experiences", "/#experiences"],
   ["About", "/#about"],

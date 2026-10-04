@@ -27,7 +27,7 @@ npm run build
 - `data/destinations.ts` defines the interface and filter categories.
 - `lib/whatsapp.ts` owns the phone number and safely encoded messages.
 - `styles/editorial.css` owns the magazine design and responsive layouts.
-- `components/animations/motion.tsx` owns GSAP/ScrollTrigger and desktop Lenis. Reduced-motion preferences disable decorative animation and pinning; touch layouts use a native horizontal scroller.
+- `components/animations/motion.tsx` owns GSAP/ScrollTrigger, desktop Lenis, and the visible motion control. `editorial-motion.ts` handles entrances and pointer interaction; `scroll-scenes.ts` handles the expanding mountain panorama, photo parallax, horizontal journey and chapter indicators. The default respects system reduced-motion preferences. Visitors can explicitly enable or reduce animation using the persistent Motion button. Small, short and touch viewports keep native scrolling without pinned scenes. `styles/motion.css` contains the scene layout and reduced-motion fallbacks.
 - `lib/i18n.ts` defines language direction. English is active. Verified Arabic labels are preserved and an Arabic-compatible font is bundled. Full Arabic interface translations and localized routes can be added here; no unverified translation is presented as complete.
 - `lib/site.ts` uses `NEXT_PUBLIC_SITE_URL` for canonical, sitemap and structured-data URLs. Set it before building for a different domain.
 - `components/ui/testimonials.tsx` renders only supplied reviews explicitly cleared for publication. No reviews are included.

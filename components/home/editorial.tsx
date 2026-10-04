@@ -11,10 +11,13 @@ export function Introduction() {
         01 — A DIFFERENT SIDE OF SAUDI
       </span>
       <div>
-        <h2 data-reveal>
-          Where the mountains
+        <h2 data-scroll-words>
+          <span>Where</span> <span>the</span> <span>mountains</span>
           <br />
-          meet <em>the clouds.</em>
+          <span>meet</span>{" "}
+          <em>
+            <span>the</span> <span>clouds.</span>
+          </em>
         </h2>
         <div className="intro-columns">
           <p data-reveal>
@@ -67,6 +70,7 @@ export function FeaturedStories() {
   ];
   return (
     <section
+      id="featured"
       className="featured-stories"
       aria-label="Featured destination stories"
     >
@@ -186,6 +190,13 @@ export function HorizontalJourney() {
         <div className="journey-progress">
           <span />
         </div>
+        <div className="journey-chapters" aria-hidden="true">
+          <span>SELECTED FIELD NOTES</span>
+          <span>
+            <b className="journey-current">01</b> /{" "}
+            {String(featuredDestinations.length).padStart(2, "0")}
+          </span>
+        </div>
       </div>
     </section>
   );
@@ -208,6 +219,11 @@ export function Experiences() {
         <Link href="#plan" className="text-link">
           Make it your journey <ArrowUpRight size={18} />
         </Link>
+        <div className="experience-chapters" aria-hidden="true">
+          <span className="experience-chapter is-current">01 — Mountains</span>
+          <span className="experience-chapter">02 — Heritage</span>
+          <span className="experience-chapter">03 — Slow living</span>
+        </div>
       </div>
       <div className="experience-stories">
         {[

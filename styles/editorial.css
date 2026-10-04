@@ -2792,31 +2792,3 @@ textarea:focus-visible {
     font-size: 3.5rem;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *:before,
-  *:after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-  }
-  .journey-viewport {
-    overflow: auto;
-    scroll-snap-type: x mandatory;
-  }
-  .journey-track {
-    transform: none !important;
-  }
-  .journey-card {
-    scroll-snap-align: start;
-  }
-  .journey-progress {
-    display: none;
-  }
-  .hero-photo {
-    transform: none !important;
-  }
-}
