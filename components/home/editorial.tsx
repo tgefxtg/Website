@@ -53,19 +53,34 @@ export function FeaturedStories() {
   const stories = [destinations[2], destinations[6], destinations[1]];
   const headings = [
     <>
-      On the edge
-      <br />
-      of <em>the clouds.</em>
+      <span className="story-title-line">
+        <span>On the edge</span>
+      </span>{" "}
+      <span className="story-title-line">
+        <span>
+          of <em>the clouds.</em>
+        </span>
+      </span>
     </>,
     <>
-      Every stone
-      <br />
-      has <em>a story.</em>
+      <span className="story-title-line">
+        <span>Every stone</span>
+      </span>{" "}
+      <span className="story-title-line">
+        <span>
+          has <em>a story.</em>
+        </span>
+      </span>
     </>,
     <>
-      A city, dressed
-      <br />
-      in <em>jacaranda.</em>
+      <span className="story-title-line">
+        <span>A city, dressed</span>
+      </span>{" "}
+      <span className="story-title-line">
+        <span>
+          in <em>jacaranda.</em>
+        </span>
+      </span>
     </>,
   ];
   return (
@@ -88,7 +103,7 @@ export function FeaturedStories() {
       </div>
       {stories.map((d, i) => (
         <article className={`feature-story story-${i}`} key={d.id}>
-          <div className="feature-image" data-image-reveal>
+          <div className="feature-image">
             <Photo
               src={i === 0 ? d.gallery[1].src : d.image}
               alt={i === 0 ? d.gallery[1].alt : d.gallery[0].alt}
@@ -96,7 +111,7 @@ export function FeaturedStories() {
             />
             <span className="feature-image-index">0{i + 1} / 03</span>
           </div>
-          <div className="feature-story-copy" data-reveal>
+          <div className="feature-story-copy">
             <span className="eyebrow">
               {d.category} {d.location && ` / ${d.location}`}
             </span>

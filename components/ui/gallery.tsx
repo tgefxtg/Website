@@ -85,7 +85,7 @@ export function Gallery({
         </button>
         {active !== null && (
           <>
-            <div className="lightbox-image">
+            <div className="lightbox-image" key={items[active].src}>
               <Photo
                 src={items[active].src}
                 alt={items[active].alt}

@@ -65,6 +65,81 @@ export function entranceMotion(gsap: GSAP) {
       },
     });
   });
+  document.querySelectorAll(".feature-story").forEach((story, index) => {
+    const sequence = gsap.timeline({
+      defaults: { duration: 1.15, ease: "power3.out" },
+      scrollTrigger: { trigger: story, start: "top 82%", once: true },
+    });
+    sequence
+      .from(
+        story.querySelector(".feature-image"),
+        {
+          clipPath: index % 2 ? "inset(0% 100% 0% 0%)" : "inset(0% 0% 0% 100%)",
+        },
+        0,
+      )
+      .from(
+        story.querySelectorAll(".story-title-line > span"),
+        {
+          yPercent: 115,
+          rotation: 2,
+          stagger: 0.12,
+        },
+        0.15,
+      )
+      .from(
+        story.querySelectorAll(
+          ".feature-story-copy > .eyebrow, .feature-story-copy > p, .feature-story-footer",
+        ),
+        {
+          opacity: 0,
+          y: 24,
+          stagger: 0.1,
+          duration: 0.85,
+        },
+        0.25,
+      );
+  });
+  const ribbon = document.querySelector(".wander-section");
+  if (ribbon) {
+    ribbon.querySelectorAll<HTMLElement>(".wander-row").forEach((row) => {
+      const direction = Number(row.dataset.wanderDirection);
+      gsap.fromTo(
+        row,
+        { xPercent: direction < 0 ? 0 : -22 },
+        {
+          xPercent: direction < 0 ? -22 : 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ribbon,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.7,
+          },
+        },
+      );
+    });
+    gsap.to(".wander-compass", {
+      rotation: 180,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ribbon,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 0.7,
+      },
+    });
+    gsap.from(".wander-baseline span", {
+      scaleX: 0,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ribbon,
+        start: "top 70%",
+        end: "bottom 40%",
+        scrub: 0.7,
+      },
+    });
+  }
   document.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => {
     const value = { n: 0 };
     gsap.to(value, {
@@ -115,7 +190,65 @@ export function pointerMotion(gsap: GSAP) {
       el.removeEventListener("blur", leave);
     });
   });
+  // Delegate hover so cards added by a filter receive the same interaction.
+  const tilts = new Map<
+    HTMLElement,
+    { x: ReturnType<typeof gsap.quickTo>; y: ReturnType<typeof gsap.quickTo> }
+  >();
+  let active: HTMLElement | null = null;
+  const reset = () => {
+    if (active) {
+      tilts.get(active)?.x(0);
+      tilts.get(active)?.y(0);
+    }
+    active = null;
+  };
+  const tilt = (event: PointerEvent) => {
+    const target = (event.target as HTMLElement).closest<HTMLElement>(
+      "[data-tilt]",
+    );
+    if (target !== active) reset();
+    if (!target) return;
+    active = target;
+    if (!tilts.has(target)) {
+      gsap.set(target, { transformPerspective: 1000 });
+      tilts.set(target, {
+        x: gsap.quickTo(target, "rotationX", {
+          duration: 0.5,
+          ease: "power3.out",
+        }),
+        y: gsap.quickTo(target, "rotationY", {
+          duration: 0.5,
+          ease: "power3.out",
+        }),
+      });
+    }
+    const box = target.parentElement!.getBoundingClientRect();
+    const positionX = gsap.utils.clamp(
+      -1,
+      1,
+      ((event.clientX - box.left) / box.width) * 2 - 1,
+    );
+    const positionY = gsap.utils.clamp(
+      -1,
+      1,
+      ((event.clientY - box.top) / target.offsetHeight) * 2 - 1,
+    );
+    tilts.get(target)!.x(-positionY * 3);
+    tilts.get(target)!.y(positionX * 4);
+  };
+  document.addEventListener("pointermove", tilt, { passive: true });
+  document.addEventListener("pointerleave", reset);
+  window.addEventListener("blur", reset);
   return () => {
     listeners.forEach((remove) => remove());
+    document.removeEventListener("pointermove", tilt);
+    document.removeEventListener("pointerleave", reset);
+    window.removeEventListener("blur", reset);
+    tilts.forEach(({ x, y }, el) => {
+      x.tween.kill();
+      y.tween.kill();
+      gsap.set(el, { clearProps: "transform" });
+    });
   };
 }

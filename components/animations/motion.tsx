@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { Pause, Play } from "lucide-react";
 import { entranceMotion, pointerMotion } from "./editorial-motion";
 import { desktopScenes } from "./scroll-scenes";
+import { collectionMotion } from "./collection-motion";
 
 type MotionMode = "full" | "reduced";
 const preferenceKey = "abha-motion";
@@ -48,6 +49,7 @@ export function Motion() {
         ]);
       if (disposed) return;
       gsap.registerPlugin(ScrollTrigger);
+      const clearCollections = collectionMotion(gsap, ScrollTrigger);
       const ctx = gsap.context(() => {
         gsap.to(".scroll-progress", {
           scaleX: 1,
@@ -58,6 +60,7 @@ export function Motion() {
       });
       const mm = gsap.matchMedia();
       cleanup = () => {
+        clearCollections();
         mm.revert();
         ctx.revert();
       };
@@ -91,6 +94,7 @@ export function Motion() {
       const timer = window.setTimeout(refresh, 500);
       cleanup = () => {
         clearTimeout(timer);
+        clearCollections();
         mm.revert();
         ctx.revert();
         document.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => {
@@ -129,7 +133,7 @@ export function Motion() {
         title={mode === "full" ? "Reduce animations" : "Enable animations"}
       >
         {mode === "full" ? <Pause size={14} /> : <Play size={14} />}
-        <span>Motion {mode === "full" ? "on" : "off"}</span>
+        <span>{mode === "full" ? "Motion on" : "Enable motion"}</span>
       </button>
     </>
   );

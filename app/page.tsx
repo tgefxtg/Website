@@ -1,5 +1,6 @@
 import { Hero } from "@/components/home/hero";
 import { MountainScene } from "@/components/home/mountain-scene";
+import { WanderRibbon } from "@/components/home/wander-ribbon";
 import {
   Introduction,
   FeaturedStories,
@@ -52,6 +53,7 @@ export default function Home() {
       <Hero />
       <Introduction />
       <MountainScene />
+      <WanderRibbon />
       <FeaturedStories />
       <HorizontalJourney />
       <section className="section discovery-section" id="destinations">

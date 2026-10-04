@@ -11,7 +11,7 @@ export function DestinationCard({
 }) {
   return (
     <article className="destination-card">
-      <div className="card-photo">
+      <div className="card-photo" data-tilt>
         <Link
           href={`/destinations/${d.slug}/`}
           aria-label={`Explore ${d.name}`}

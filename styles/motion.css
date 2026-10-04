@@ -19,26 +19,98 @@
 .motion-toggle:hover {
   background: var(--ivory);
 }
-.motion-toggle {
-  width: 44px;
-  padding: 0;
-  justify-content: center;
-}
 .motion-toggle > span {
-  display: none;
-  position: absolute;
-  left: calc(100% + 6px);
-  padding: 12px;
   white-space: nowrap;
-  background: var(--cream);
-  border: 1px solid var(--line);
-}
-.motion-toggle:hover > span,
-.motion-toggle:focus-visible > span {
-  display: block;
 }
 .motion-toggle:disabled {
   opacity: 0;
+}
+.motion-toggle[aria-pressed="true"]::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--green);
+}
+.story-title-line {
+  display: block;
+  overflow: clip;
+  padding-block: 0.08em;
+  margin-block: -0.08em;
+}
+.story-title-line > span {
+  display: block;
+  transform-origin: left bottom;
+}
+.wander-section {
+  padding: 58px 0 0;
+  overflow: hidden;
+  background: var(--cream);
+}
+.wander-kicker {
+  margin: 0 6% 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--muted);
+}
+.wander-type {
+  padding-bottom: 42px;
+}
+.wander-row {
+  display: flex;
+  width: max-content;
+  gap: 0.22em;
+  font-family: var(--font-editorial), Georgia, serif;
+  font-size: clamp(4rem, 9.2vw, 10rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+  white-space: nowrap;
+}
+.wander-row span {
+  padding: 0 0.12em;
+}
+.wander-row i {
+  font-size: 0.54em;
+  font-style: normal;
+  vertical-align: 12%;
+  padding-inline: 0.26em;
+  color: var(--purple);
+}
+.wander-row-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--purple);
+  margin-left: -12%;
+}
+.wander-row-outline em {
+  color: var(--purple);
+  -webkit-text-stroke: 0;
+}
+.wander-baseline {
+  height: 1px;
+  margin: 0 6%;
+  background: var(--line);
+}
+.wander-baseline span {
+  display: block;
+  height: 100%;
+  background: var(--green);
+  transform-origin: left;
+}
+html[data-motion="full"] .lightbox-image {
+  animation: photo-enter 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes photo-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.975);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 html.lenis,
 html.lenis body {
@@ -298,6 +370,25 @@ html[data-motion="full"] .mobile-menu[open] nav a:nth-child(6) {
   }
 }
 @media (max-width: 520px) {
+  .wander-section {
+    padding-top: 34px;
+  }
+  .wander-kicker {
+    margin-bottom: 30px;
+  }
+  .wander-kicker .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+  .wander-kicker svg {
+    width: 22px;
+  }
+  .wander-type {
+    padding-bottom: 30px;
+  }
+  .wander-row {
+    font-size: 3.9rem;
+  }
   .motion-toggle {
     left: 12px;
     bottom: 77px;
