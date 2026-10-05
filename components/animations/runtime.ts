@@ -81,8 +81,7 @@ export function startMotion(
               lerp: 0.085,
               smoothWheel: true,
               syncTouch: false,
-              // This runtime only runs after the app has resolved reduced motion,
-              // including an explicit choice using its visible motion control.
+              // The site runs motion automatically, without a preference toggle.
               respectReducedMotion: false,
               stopInertiaOnNavigate: true,
               // Lenis reads the shared CSS scroll-padding-top itself.

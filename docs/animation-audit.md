@@ -8,7 +8,7 @@ The site uses Next.js 16.3.8 App Router, React 19.3.0, TypeScript and npm. Insta
 
 Lenis reads the CSS header scroll padding for anchor navigation. Initial deep links are corrected after pin spacing is measured. Opening a native dialog stops Lenis; closing it resumes scrolling. Dialog content remains independently scrollable.
 
-The React effect cleans up before route changes, preference changes and unmount. GSAP matchMedia reverts owned animations and pins at breakpoint changes. Cleanup also removes the ticker, scroll subscriptions, dialog observer, collection observers, pointer handlers, focus handlers, timers and Lenis instance. Async imports are guarded against unmount. A setup failure restores static content and logs its cause.
+The React effect cleans up before route changes and unmount. GSAP matchMedia reverts owned animations and pins at breakpoint changes. Cleanup also removes the ticker, scroll subscriptions, dialog observer, collection observers, pointer handlers, focus handlers, timers and Lenis instance. Async imports are guarded against unmount. A setup failure restores static content and logs its cause.
 
 ## Section concepts
 
@@ -33,8 +33,8 @@ The React effect cleans up before route changes, preference changes and unmount.
 
 ## Accessibility and performance
 
-- OS `prefers-reduced-motion` is the default. The visible Motion control can explicitly override it, with an optional stored preference.
-- Reduced mode removes pins and Lenis, reverts GSAP styles, and disables motion transitions. Content and navigation remain usable if animation imports fail.
+- Motion starts automatically on every visit and route. The site owner requested always-on motion; the former toggle, stored preference and OS preference switching have been removed.
+- If animation setup fails, a static fallback restores content and navigation. Normal desktop and mobile visits always run their animation sequences.
 - Compact mode is used below 1001px width, below 650px height, or without a fine pointer. It retains intentional animation while using native scrolling and no long pins.
 - The native cursor remains visible. The decorative photo cursor is pointer-inert and only appears on fine-pointer devices.
 - Keyboard focus reveals collection cards immediately and brings pinned journey cards into view. Dialogs keep native focus trapping, Escape handling and focus restoration.

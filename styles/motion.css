@@ -1,37 +1,4 @@
 /* Content is visible by default. Motion is enabled only after client setup. */
-.motion-toggle {
-  position: fixed;
-  left: 20px;
-  bottom: 24px;
-  z-index: 44;
-  display: inline-flex;
-  gap: 8px;
-  align-items: center;
-  min-height: 44px;
-  padding: 10px 14px;
-  border: 1px solid var(--line);
-  border-radius: 0;
-  background: var(--cream);
-  color: var(--green);
-  font-size: 12px;
-  box-shadow: 0 4px 20px #1638240d;
-}
-.motion-toggle:hover {
-  background: var(--ivory);
-}
-.motion-toggle > span {
-  white-space: nowrap;
-}
-.motion-toggle:disabled {
-  opacity: 0;
-}
-.motion-toggle[aria-pressed="true"]::after {
-  content: "";
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--green);
-}
 .story-title-line {
   display: block;
   overflow: clip;
@@ -470,12 +437,6 @@ html[data-motion="full"] .mobile-menu[open] nav a:nth-child(6) {
   .wander-row {
     font-size: 3.9rem;
   }
-  .motion-toggle {
-    left: 12px;
-    bottom: 77px;
-    padding: 9px 11px;
-    font-size: 11px;
-  }
   .mountain-title {
     font-size: clamp(4rem, 15vw, 5.5rem);
   }
@@ -498,14 +459,4 @@ html[data-motion="reduced"] *::after {
   animation: none !important;
   transition: none !important;
   scroll-behavior: auto !important;
-}
-@media (prefers-reduced-motion: reduce) {
-  html:not([data-motion="full"]),
-  html:not([data-motion="full"]) *,
-  html:not([data-motion="full"]) *::before,
-  html:not([data-motion="full"]) *::after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-  }
 }
