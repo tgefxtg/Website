@@ -19,10 +19,9 @@ export function desktopScenes(
       },
     });
     cover
-      .to(".hero-photo", { yPercent: 16, scale: 1.13, ease: "none" }, 0)
-      .to(".hero-content", { y: -65, ease: "none" }, 0)
-      .to(".hero-fog", { xPercent: 30, opacity: 0, ease: "none" }, 0)
-      .to(".hero-photo-bottom", { y: -45, ease: "none" }, 0);
+      .fromTo(".hero-photo", { yPercent: 0, scale: 1 }, { yPercent: 16, scale: 1.13, ease: "none" }, 0)
+      .fromTo(".hero-content", { y: 0 }, { y: -65, ease: "none" }, 0)
+      .fromTo(".hero-fog", { xPercent: 0, opacity: 1 }, { xPercent: 30, opacity: 0, ease: "none" }, 0);
   }
   const mountain = document.querySelector(".mountain-scene");
   if (mountain) {
