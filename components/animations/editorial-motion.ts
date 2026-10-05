@@ -41,7 +41,7 @@ export function entranceMotion(gsap: GSAP, compact = false) {
         opacity: 0,
         duration: 0.95,
         ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 94%", once: true },
+        scrollTrigger: { trigger: el, start: "top 94%", toggleActions: "play none none none" },
       });
     });
   document.querySelectorAll("[data-image-reveal]").forEach((el) => {
@@ -49,7 +49,7 @@ export function entranceMotion(gsap: GSAP, compact = false) {
       clipPath: "inset(12% 5% 12% 5%)",
       duration: 1.4,
       ease: "power3.out",
-      scrollTrigger: { trigger: el, start: "top 88%", once: true },
+      scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none none" },
     });
   });
   document.querySelectorAll("[data-scroll-words]").forEach((el) => {
@@ -68,7 +68,7 @@ export function entranceMotion(gsap: GSAP, compact = false) {
   document.querySelectorAll(".feature-story").forEach((story, index) => {
     const sequence = gsap.timeline({
       defaults: { duration: 1.15, ease: "power3.out" },
-      scrollTrigger: { trigger: story, start: "top 82%", once: true },
+      scrollTrigger: { trigger: story, start: "top 82%", toggleActions: "play none none none" },
     });
     sequence
       .from(
@@ -149,7 +149,7 @@ export function entranceMotion(gsap: GSAP, compact = false) {
       onUpdate: () => {
         el.textContent = String(value.n);
       },
-      scrollTrigger: { trigger: el, start: "top 95%", once: true },
+      scrollTrigger: { trigger: el, start: "top 95%", toggleActions: "play none none none" },
     });
   });
   const footer = document.querySelector(".footer-word");

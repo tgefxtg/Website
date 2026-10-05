@@ -5,7 +5,13 @@ export function sectionScenes(gsap: GSAP, compact: boolean) {
   const sequence = (element: Element) =>
     gsap.timeline({
       defaults: { duration: compact ? 0.65 : 0.95, ease: "power3.out" },
-      scrollTrigger: { trigger: element, start: "top 88%", once: true },
+      // Keep completed triggers owned by the context until cleanup. Killing them
+      // during GSAP's nested refresh can race when rebuilding far down the page.
+      scrollTrigger: {
+        trigger: element,
+        start: "top 88%",
+        toggleActions: "play none none none",
+      },
     });
   const heading = (element: Element) => {
     const title = element.querySelector("h1,h2");
