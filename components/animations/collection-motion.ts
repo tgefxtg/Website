@@ -2,7 +2,11 @@ type GSAP = typeof import("gsap").gsap;
 type Triggers = typeof import("gsap/ScrollTrigger").ScrollTrigger;
 
 // React can replace the collection after filtering, without a route change.
-export function collectionMotion(gsap: GSAP, ScrollTrigger: Triggers) {
+export function collectionMotion(
+  gsap: GSAP,
+  ScrollTrigger: Triggers,
+  compact = false,
+) {
   const context = gsap.context(() => {});
   const observed = new Set<Element>();
   const revealed = new WeakSet<Element>();
@@ -24,13 +28,13 @@ export function collectionMotion(gsap: GSAP, ScrollTrigger: Triggers) {
       context.add(() => {
         gsap.fromTo(
           arriving,
-          { y: 48, opacity: 0, scale: 0.98 },
+          { y: compact ? 22 : 48, opacity: 0, scale: 0.98 },
           {
             y: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.85,
-            stagger: 0.085,
+            duration: compact ? 0.6 : 0.85,
+            stagger: compact ? 0.045 : 0.085,
             ease: "power3.out",
             clearProps: "transform,opacity",
           },
@@ -46,12 +50,14 @@ export function collectionMotion(gsap: GSAP, ScrollTrigger: Triggers) {
         observed.delete(el);
       }
     });
-    document.querySelectorAll(".destination-card").forEach((el) => {
-      if (!observed.has(el) && !revealed.has(el)) {
-        observed.add(el);
-        observer.observe(el);
-      }
-    });
+    document
+      .querySelectorAll(".destination-card, .planner-place")
+      .forEach((el) => {
+        if (!observed.has(el) && !revealed.has(el)) {
+          observed.add(el);
+          observer.observe(el);
+        }
+      });
   };
   const changes = new MutationObserver(() => {
     collect();
@@ -63,7 +69,9 @@ export function collectionMotion(gsap: GSAP, ScrollTrigger: Triggers) {
     sizes.observe(el);
   });
   const focus = (event: FocusEvent) => {
-    const card = (event.target as HTMLElement).closest(".destination-card");
+    const card = (event.target as HTMLElement).closest(
+      ".destination-card, .planner-place",
+    );
     if (!card) return;
     observer.unobserve(card);
     revealed.add(card);

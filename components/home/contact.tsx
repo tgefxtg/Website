@@ -14,6 +14,7 @@ export function Contact() {
   }
   return (
     <section id="contact" className="contact-section">
+      <div className="contact-rule" aria-hidden="true" />
       <div className="contact-intro" data-reveal>
         <span className="eyebrow">THE BEST JOURNEYS BEGIN WITH HELLO</span>
         <h2>

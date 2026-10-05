@@ -142,10 +142,10 @@ html.lenis.lenis-smooth {
   overflow: hidden;
   background: var(--green);
 }
-html:not([data-scroll-scenes="pinned"]) .mountain-window {
+html[data-motion="reduced"] .mountain-window {
   clip-path: none !important;
 }
-html:not([data-scroll-scenes="pinned"])
+html[data-motion="reduced"]
   :is(
     .mountain-landscape,
     .mountain-title,
@@ -322,6 +322,87 @@ html:not([data-scroll-scenes="pinned"]) .desktop-journey-hint {
 }
 html:not([data-scroll-scenes="pinned"]) .mobile-journey-hint {
   display: inline;
+}
+html[data-scroll-scenes="flow"] .journey-progress {
+  display: block;
+}
+html[data-scroll-scenes="flow"] .journey-chapters {
+  display: flex;
+}
+.photo-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 80;
+  width: 42px;
+  height: 42px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--green);
+  box-shadow: 0 4px 18px #102c2826;
+  opacity: 0;
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  html[data-motion="full"] .photo-cursor {
+    display: flex;
+  }
+}
+/* Keep subpixel reveal transforms from creating a page-wide scrollbar.
+   clip preserves the viewport as the sticky/pinning scroll container. */
+body {
+  overflow-x: clip;
+}
+.contact-section {
+  position: relative;
+}
+.contact-rule {
+  position: absolute;
+  top: 0;
+  left: 6%;
+  right: 6%;
+  height: 2px;
+  background: var(--lime);
+}
+.contact-form :is(input, select, textarea) {
+  transition:
+    border-color 0.25s,
+    background-color 0.25s;
+}
+.contact-form :is(input, select, textarea):focus {
+  background-color: #ffffff08;
+  border-color: var(--lime);
+}
+.interest-pills button,
+.planner-place .selection-check {
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s,
+    transform 0.3s;
+}
+html[data-motion="full"] .planner-place.selected .selection-check {
+  transform: scale(1.08);
+}
+html[data-motion="full"] .chosen-places > button {
+  animation: photo-enter 0.35s both;
+}
+html[data-motion="full"] .mobile-menu[open] {
+  animation: menu-sheet 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes menu-sheet {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+html[data-motion="full"] .destination-grid {
+  animation: none;
 }
 html[data-motion="full"] .mobile-menu[open] nav a {
   animation: menu-reveal 0.7s both cubic-bezier(0.22, 1, 0.36, 1);

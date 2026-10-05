@@ -1,10 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Pause, Play } from "lucide-react";
-import { entranceMotion, pointerMotion } from "./editorial-motion";
-import { desktopScenes } from "./scroll-scenes";
-import { collectionMotion } from "./collection-motion";
+import { ArrowUpRight, Pause, Play } from "lucide-react";
+import { startMotion } from "./runtime";
 
 type MotionMode = "full" | "reduced";
 const preferenceKey = "abha-motion";
@@ -48,63 +46,14 @@ export function Motion() {
           import("lenis"),
         ]);
       if (disposed) return;
-      gsap.registerPlugin(ScrollTrigger);
-      const clearCollections = collectionMotion(gsap, ScrollTrigger);
-      const ctx = gsap.context(() => {
-        gsap.to(".scroll-progress", {
-          scaleX: 1,
-          ease: "none",
-          scrollTrigger: { start: 0, end: "max", scrub: true },
-        });
-        entranceMotion(gsap);
-      });
-      const mm = gsap.matchMedia();
-      cleanup = () => {
-        clearCollections();
-        mm.revert();
-        ctx.revert();
-      };
-      mm.add(
-        "(min-width: 1001px) and (min-height: 650px) and (pointer: fine)",
-        () => {
-          document.documentElement.dataset.scrollScenes = "pinned";
-          const lenis = new Lenis({
-            duration: 1.05,
-            smoothWheel: true,
-            anchors: { offset: -90 },
-            prevent: (node) => node.closest("dialog") !== null,
-          });
-          lenis.on("scroll", ScrollTrigger.update);
-          const tick = (time: number) => lenis.raf(time * 1000);
-          gsap.ticker.add(tick);
-          const clearScenes = desktopScenes(gsap, ScrollTrigger, lenis);
-          return () => {
-            clearScenes();
-            gsap.ticker.remove(tick);
-            lenis.destroy();
-            delete document.documentElement.dataset.scrollScenes;
-          };
-        },
-      );
-      mm.add("(hover: hover) and (pointer: fine)", () => pointerMotion(gsap));
-      const refresh = () => {
-        if (!disposed) ScrollTrigger.refresh();
-      };
-      document.fonts.ready.then(refresh);
-      const timer = window.setTimeout(refresh, 500);
-      cleanup = () => {
-        clearTimeout(timer);
-        clearCollections();
-        mm.revert();
-        ctx.revert();
-        document.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => {
-          el.textContent = el.dataset.count || "";
-        });
-      };
+      cleanup = startMotion(gsap, ScrollTrigger, Lenis);
     }
-    init().catch(() => {
+    init().catch((error) => {
       cleanup();
-      if (!disposed) setMode("reduced");
+      if (!disposed) {
+        console.error("Animation setup failed; restoring static content.", error);
+        setMode("reduced");
+      }
     });
     return () => {
       disposed = true;
@@ -124,6 +73,9 @@ export function Motion() {
   return (
     <>
       <div className="scroll-progress" aria-hidden="true" />
+      <span className="photo-cursor" aria-hidden="true">
+        <ArrowUpRight size={22} />
+      </span>
       <button
         className="motion-toggle"
         onClick={toggle}

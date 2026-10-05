@@ -1,6 +1,6 @@
 type GSAP = typeof import("gsap").gsap;
 
-export function entranceMotion(gsap: GSAP) {
+export function entranceMotion(gsap: GSAP, compact = false) {
   if (document.querySelector(".magazine-hero")) {
     const cover = gsap.timeline({ defaults: { ease: "power3.out" } });
     cover
@@ -33,11 +33,11 @@ export function entranceMotion(gsap: GSAP) {
   }
   document
     .querySelectorAll(
-      "[data-reveal], .section-heading, .stories-heading, .detail-title-row",
+      "[data-reveal]:not(.planner-heading, .contact-intro, .about-copy, .experience-story), .section-heading, .stories-heading, .detail-title-row",
     )
     .forEach((el) => {
       gsap.from(el, {
-        y: 35,
+        y: compact ? 18 : 35,
         opacity: 0,
         duration: 0.95,
         ease: "power3.out",
@@ -106,9 +106,9 @@ export function entranceMotion(gsap: GSAP) {
       const direction = Number(row.dataset.wanderDirection);
       gsap.fromTo(
         row,
-        { xPercent: direction < 0 ? 0 : -22 },
+        { xPercent: direction < 0 ? 0 : compact ? -10 : -22 },
         {
-          xPercent: direction < 0 ? -22 : 0,
+          xPercent: direction < 0 ? (compact ? -10 : -22) : 0,
           ease: "none",
           scrollTrigger: {
             trigger: ribbon,
@@ -169,6 +169,53 @@ export function entranceMotion(gsap: GSAP) {
 
 export function pointerMotion(gsap: GSAP) {
   const listeners: (() => void)[] = [];
+  const cursor = document.querySelector<HTMLElement>(".photo-cursor");
+  const cursorX = cursor
+    ? gsap.quickTo(cursor, "x", { duration: 0.2, ease: "power3.out" })
+    : null;
+  const cursorY = cursor
+    ? gsap.quickTo(cursor, "y", { duration: 0.2, ease: "power3.out" })
+    : null;
+  const cursorOpacity = cursor
+    ? gsap.quickTo(cursor, "opacity", { duration: 0.2 })
+    : null;
+  const cursorScaleX = cursor
+    ? gsap.quickTo(cursor, "scaleX", { duration: 0.3 })
+    : null;
+  const cursorScaleY = cursor
+    ? gsap.quickTo(cursor, "scaleY", { duration: 0.3 })
+    : null;
+  let cursorVisible = false;
+  const hideCursor = () => {
+    cursorOpacity?.(0);
+    cursorScaleX?.(0.65);
+    cursorScaleY?.(0.65);
+    cursorVisible = false;
+  };
+  const followCursor = (event: PointerEvent) => {
+    const photo = (event.target as Element).closest(
+      ".journey-photo, .gallery-image, .card-photo > a:first-child",
+    );
+    if (!photo || document.querySelector("dialog[open]")) {
+      if (cursorVisible) hideCursor();
+      return;
+    }
+    const x = Math.min(window.innerWidth - 50, event.clientX + 16);
+    const y = Math.min(window.innerHeight - 50, event.clientY + 16);
+    if (!cursorVisible && cursor) {
+      gsap.set(cursor, { x, y });
+      cursorOpacity?.(1);
+      cursorScaleX?.(1);
+      cursorScaleY?.(1);
+      cursorVisible = true;
+    }
+    cursorX?.(x);
+    cursorY?.(y);
+  };
+  document.addEventListener("pointermove", followCursor, { passive: true });
+  document.addEventListener("pointerleave", hideCursor);
+  document.addEventListener("scroll", hideCursor, { passive: true });
+  document.addEventListener("pointerdown", hideCursor);
   document.querySelectorAll<HTMLElement>("[data-magnetic]").forEach((el) => {
     const x = gsap.quickTo(el, "x", { duration: 0.45, ease: "power3.out" });
     const y = gsap.quickTo(el, "y", { duration: 0.45, ease: "power3.out" });
@@ -211,6 +258,13 @@ export function pointerMotion(gsap: GSAP) {
     if (!target) return;
     active = target;
     if (!tilts.has(target)) {
+      tilts.forEach(({ x, y }, el) => {
+        if (!el.isConnected) {
+          x.tween.kill();
+          y.tween.kill();
+          tilts.delete(el);
+        }
+      });
       gsap.set(target, { transformPerspective: 1000 });
       tilts.set(target, {
         x: gsap.quickTo(target, "rotationX", {
@@ -241,6 +295,14 @@ export function pointerMotion(gsap: GSAP) {
   document.addEventListener("pointerleave", reset);
   window.addEventListener("blur", reset);
   return () => {
+    document.removeEventListener("pointermove", followCursor);
+    document.removeEventListener("pointerleave", hideCursor);
+    document.removeEventListener("scroll", hideCursor);
+    document.removeEventListener("pointerdown", hideCursor);
+    [cursorX, cursorY, cursorOpacity, cursorScaleX, cursorScaleY].forEach((move) =>
+      move?.tween.kill(),
+    );
+    if (cursor) gsap.set(cursor, { clearProps: "transform,opacity" });
     listeners.forEach((remove) => remove());
     document.removeEventListener("pointermove", tilt);
     document.removeEventListener("pointerleave", reset);
