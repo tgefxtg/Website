@@ -23,8 +23,7 @@ export default function Credits() {
         </p>
         <p>
           Images have been extracted, resized and converted to WebP for this
-          website. Original photography quality varies. Silent Valley Hills has
-          no photograph in the reference and is clearly marked accordingly.
+          website. Original photography quality varies.
         </p>
       </section>
       <section>

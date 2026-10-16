@@ -33,7 +33,7 @@ export function Introduction() {
         </div>
         <div className="intro-stats">
           <div>
-            <strong data-count="30">30</strong>
+            <strong data-count={destinations.length}>{destinations.length}</strong>
             <span>PLACES TO DISCOVER</span>
           </div>
           <div>
@@ -152,7 +152,7 @@ export function HorizontalJourney() {
           <div>
             <p className="eyebrow">KEEP YOUR CURIOSITY MOVING</p>
             <h2 id="journey-title">
-              30 places.
+              {destinations.length} places.
               <br />
               <em>Endless memories.</em>
             </h2>

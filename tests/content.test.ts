@@ -10,9 +10,9 @@ import {
 const data = JSON.parse(
   readFileSync(new URL("../data/destinations.json", import.meta.url), "utf8"),
 );
-test("30 distinct destinations retain source page references and valid local image variants", () => {
-  assert.equal(data.length, 30);
-  assert.equal(new Set(data.map((d: any) => d.slug)).size, 30);
+test("29 distinct destinations retain source page references and valid local image variants", () => {
+  assert.equal(data.length, 29);
+  assert.equal(new Set(data.map((d: any) => d.slug)).size, 29);
   for (const d of data) {
     assert.ok(d.sourcePage >= 2 && d.sourcePage <= 30);
     assert.ok(d.description);
@@ -25,8 +25,8 @@ test("30 distinct destinations retain source page references and valid local ima
     if (d.mapUrl) assert.equal(new URL(d.mapUrl).hostname, "maps.app.goo.gl");
   }
   assert.equal(
-    data.find((d: any) => d.slug === "silent-valley-hills").image,
-    null,
+    data.some((d: any) => d.slug === "silent-valley-hills"),
+    false,
   );
   assert.equal(
     data.find((d: any) => d.slug === "the-summer-gathering").mapUrl,

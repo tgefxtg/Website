@@ -41,7 +41,7 @@ assert.deepEqual(
 assert.ok(fs.existsSync("out/sitemap.xml"));
 assert.ok(fs.existsSync("out/robots.txt"));
 const sitemap = fs.readFileSync("out/sitemap.xml", "utf8");
-assert.equal((sitemap.match(/<loc>/g) || []).length, 33);
+assert.equal((sitemap.match(/<loc>/g) || []).length, routes.length);
 console.log(
   `Verified ${routes.length} page exports, their local links/assets, one h1 per page, canonical metadata, sitemap and robots.`,
 );

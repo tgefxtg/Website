@@ -2,18 +2,18 @@ import type { Metadata } from "next";
 import { DestinationExplorer } from "@/components/destinations/explorer";
 import { WhatsAppLink } from "@/components/ui/whatsapp-link";
 export const metadata: Metadata = {
-  title: "30 places to discover in Abha & Aseer",
+  title: "29 places to discover in Abha & Aseer",
   description:
-    "Find your next escape among 30 destinations: mountains, heritage villages, farms, parks and waterfalls around Abha, Aseer and nearby Jazan.",
+    "Find your next escape among 29 destinations: mountains, heritage villages, farms, parks and waterfalls around Abha, Aseer and nearby Jazan.",
   alternates: { canonical: "/destinations/" },
   openGraph: {
-    title: "30 places to discover in Abha & Aseer",
+    title: "29 places to discover in Abha & Aseer",
     description:
       "Explore mountains, villages, farms, parks and waterfalls, and plan your journey with Abha Tourist Center.",
     url: "/destinations/",
   },
   twitter: {
-    title: "30 places to discover in Abha & Aseer",
+    title: "29 places to discover in Abha & Aseer",
     description: "A collection of mountain escapes, farms and heritage places.",
   },
 };
@@ -24,7 +24,7 @@ export default function Destinations() {
         <div>
           <span className="eyebrow">THE ABHA & ASEER COLLECTION</span>
           <h1>
-            Thirty places.
+            Twenty-nine places.
             <br />
             <em>Your next chapter.</em>
           </h1>

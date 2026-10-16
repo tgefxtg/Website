@@ -13,12 +13,12 @@ import { Contact } from "@/components/home/contact";
 import { DestinationExplorer } from "@/components/destinations/explorer";
 import { Gallery } from "@/components/ui/gallery";
 import { Testimonials } from "@/components/ui/testimonials";
-import { destinations } from "@/data/destinations";
+import { destinations, getDestination } from "@/data/destinations";
 import { site } from "@/lib/site";
 const gallery = [
   destinations[6],
   destinations[1],
-  destinations[28],
+  getDestination("wadi-lajab")!,
   destinations[4],
   destinations[12],
   destinations[22],

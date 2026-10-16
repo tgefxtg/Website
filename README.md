@@ -1,6 +1,6 @@
 # Abha Tourist Center
 
-A responsive travel website with an ivory editorial design, serif typography, 30 destination pages, local photography, GSAP scroll scenes, a searchable destination collection, a trip wish list and WhatsApp enquiries.
+A responsive travel website with an ivory editorial design, serif typography, 29 destination pages, local photography, GSAP scroll scenes, a searchable destination collection, a trip wish list and WhatsApp enquiries.
 
 ## Run locally
 
@@ -19,7 +19,7 @@ npm test
 npm run build
 ```
 
-`npm run build` generates a static site in `out/`. Deploy that folder to a static host. All 30 detail routes are generated at build time. `next start` is not used for static exports. `npm run preview` serves the production export locally with Node.
+`npm run build` generates a static site in `out/`. Deploy that folder to a static host. All 29 detail routes are generated at build time. `next start` is not used for static exports. `npm run preview` serves the production export locally with Node.
 
 ## Content and configuration
 
@@ -40,7 +40,7 @@ The original collection used 101 destination photos extracted from the supplied 
 
 The Al Soudah cover photo is “Al Sowda Hill top 04” by Irshadpp, Wikimedia Commons, CC BY-SA 4.0. Attribution and license links appear on `/credits/`. The adapted cover photo keeps its original share-alike license.
 
-Silent Valley Hills has no supplied photograph and has an explicit placeholder. The Summer Gathering has a malformed source map link and its map action is hidden. Conflicting historical mosque dates are omitted. Four reference price records are clearly labelled for reconfirmation. Supplied photography permissions should be confirmed by the business before a public commercial launch; the initial Sites deployment is private.
+The Summer Gathering has a malformed source map link and its map action is hidden. Conflicting historical mosque dates are omitted. Four reference price records are clearly labelled for reconfirmation. Supplied photography permissions should be confirmed by the business before a public commercial launch; the initial Sites deployment is private.
 
 ## Enquiries and privacy
 

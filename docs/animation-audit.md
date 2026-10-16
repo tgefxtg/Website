@@ -29,7 +29,7 @@ The React effect cleans up before route changes and unmount. GSAP matchMedia rev
 | Contact | Scroll-drawn accent rule, masked heading, staggered fields and focus feedback | Shorter field entrances and same usable form |
 | Footer | Staggered columns and oversized wordmark rising with scroll | Shorter column entrances and wordmark reveal |
 | Destination index | Editorial heading and dynamically refreshed card choreography | Shorter card arrivals; native scrolling |
-| All 30 detail pages | Framed hero reveal, photo parallax, staggered highlights, visit-card reveal, gallery curtains and related-card arrivals | Gentle hero zoom and shorter content sequences |
+| All 29 detail pages | Framed hero reveal, photo parallax, staggered highlights, visit-card reveal, gallery curtains and related-card arrivals | Gentle hero zoom and shorter content sequences |
 
 ## Accessibility and performance
 
@@ -38,7 +38,7 @@ The React effect cleans up before route changes and unmount. GSAP matchMedia rev
 - Compact mode is used below 1001px width, below 650px height, or without a fine pointer. It retains intentional animation while using native scrolling and no long pins.
 - The native cursor remains visible. The decorative photo cursor is pointer-inert and only appears on fine-pointer devices.
 - Keyboard focus reveals collection cards immediately and brings pinned journey cards into view. Dialogs keep native focus trapping, Escape handling and focus restoration.
-- Existing text, all 30 destinations, local photography, metadata, buttons, map links and WhatsApp draft flows remain intact.
+- Existing text, the 29 listed destinations, local photography, metadata, buttons, map links and WhatsApp draft flows remain intact.
 
 ## Maintenance
 
