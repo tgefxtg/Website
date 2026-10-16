@@ -36,7 +36,7 @@ npm run build
 
 ## Photography and source notes
 
-101 destination photos were extracted from the supplied “Aseer Explore – Nasik Ahammed” PDF. The source PDF is not published. Photos are attached to their source destinations; the map-icon images and cover contact information were excluded. Smaller source images are not artificially enlarged. Local responsive WebP variants use the Next/Image custom loader so the static site does not need a remote image optimizer.
+The original collection used 101 destination photos extracted from the supplied “Aseer Explore – Nasik Ahammed” PDF. The main photos for 22 destinations have since been replaced with images supplied and selected by the owner, stored as `*-selected.webp` with six responsive variants. These are used in destination cards, featured stories, detail-page heroes and the first gallery position; additional reference gallery photos remain. The source PDF is not published. Smaller source images are not artificially enlarged. Local responsive WebP variants use the Next/Image custom loader so the static site does not need a remote image optimizer.
 
 The Al Soudah cover photo is “Al Sowda Hill top 04” by Irshadpp, Wikimedia Commons, CC BY-SA 4.0. Attribution and license links appear on `/credits/`. The adapted cover photo keeps its original share-alike license.
 

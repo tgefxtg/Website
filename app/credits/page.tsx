@@ -16,7 +16,7 @@ export default function Credits() {
       <section>
         <h2>Aseer Explore</h2>
         <p>
-          The destination collection, destination photographs, reference prices,
+          The destination collection, original gallery photographs, reference prices,
           and map links are based on “Aseer Explore – Nasik Ahammed”, supplied
           to Abha Tourist Center as a content reference. Names in Arabic are
           preserved where supplied.
@@ -25,6 +25,16 @@ export default function Credits() {
           Images have been extracted, resized and converted to WebP for this
           website. Original photography quality varies. Silent Valley Hills has
           no photograph in the reference and is clearly marked accordingly.
+        </p>
+      </section>
+      <section>
+        <h2>Selected destination images</h2>
+        <p>
+          The main images for 22 destinations were supplied and selected by
+          Abha Tourist Center. They appear throughout the destination cards,
+          featured stories and destination pages. Additional gallery photographs
+          remain from the Aseer Explore reference. Images are resized and
+          converted to WebP for responsive display.
         </p>
       </section>
       <section>

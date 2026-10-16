@@ -253,14 +253,14 @@ export function Experiences() {
             icon: Landmark,
             title: "Heritage, held close",
             text: "Stone-built villages and art that carries the character of Aseer.",
-            image: destinations[6].gallery[2].src,
+            image: destinations[6].image,
             link: destinations[6].slug,
           },
           {
             icon: Leaf,
             title: "The joy of slowing down",
             text: "Leafy paths, fresh fruit, and time together on the farms.",
-            image: destinations[12].gallery[1].src,
+            image: destinations[12].image,
             link: destinations[12].slug,
           },
         ].map((x, i) => (
@@ -297,8 +297,8 @@ export function About() {
     <section id="about" className="section about-section">
       <div className="about-image" data-image-reveal>
         <Photo
-          src={destinations[12].gallery[2].src}
-          alt="Shaded seating beneath grapevines at The Vineyard"
+          src={destinations[12].image}
+          alt="Grape clusters growing at The Vineyard"
           sizes="(max-width:800px) 90vw, 40vw"
         />
         <span>TAKE A SEAT. STAY A LITTLE LONGER.</span>

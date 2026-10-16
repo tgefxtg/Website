@@ -46,7 +46,7 @@ export function Hero() {
         <div className="hero-footnote">
           <span className="hero-small-photo">
             <Photo
-              src="/images/destinations/rijal-alma-3.webp"
+              src="/images/destinations/rijal-alma-selected.webp"
               alt="Traditional stone architecture in Rijal Alma"
               sizes="160px"
             />
