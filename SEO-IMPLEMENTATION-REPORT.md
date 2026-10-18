@@ -43,8 +43,8 @@ Single Lighthouse CLI runs against the built Worker on localhost, same machine a
 
 | Profile | Performance before / after | Accessibility before / after | SEO before / after | LCP before / after | CLS |
 |---|---|---|---|---|---|
-| mobile | 76 / 83 | 96 / 100 | 100 / 100 | 5.07s / 4.02s | 0 |
-| desktop | 97 / 98 | 96 / 100 | 100 / 100 | 1.15s / 1.00s | 0 |
+| mobile | 76 / 87 | 96 / 100 | 100 / 100 | 5.07s / 3.62s | 0 |
+| desktop | 97 / 99 | 96 / 100 | 100 / 100 | 1.15s / 0.89s | 0 |
 
 Mobile LCP remains above 2.5 seconds. Further image/animation/font tuning and field measurement remain necessary. A Lighthouse accessibility score is not a complete manual accessibility certification. Raw measurement files are retained locally under tmp/seo-*.json.
 
@@ -64,3 +64,7 @@ Mobile LCP remains above 2.5 seconds. Further image/animation/font tuning and fi
 6. Week 4: review impressions, clicks, CTR and actual queries, identify content gaps, and prioritize a controlled dependency upgrade. Rankings, rich results and indexing are not guaranteed.
 
 References: https://developers.google.com/search/docs/essentials/technical ; https://developers.google.com/search/docs/appearance/structured-data/sd-policies ; https://web.dev/articles/vitals
+
+## Final navigation regression fix
+
+Production browser testing uncovered broken Vinext client-side Link prefetch and navigation exports (TypeError). Internal navigation now uses ordinary crawlable anchors, preserving URLs, same-page smooth scrolling, and JavaScript-free navigation. Collection and destination clicks pass after rebuilding, with no new console errors. Mobile menu Escape dismissal restores focus to Open navigation; 390px mobile and 768px tablet destination layouts show no horizontal overflow. Full page navigation replaces speculative RSC prefetch; cinematic animations initialize on each page load.

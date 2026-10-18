@@ -1,4 +1,4 @@
-import Link from "next/link";
+
 import { ArrowUpRight, Mountain, Leaf, Landmark, Sparkles } from "lucide-react";
 import { getPlaces } from "@/lib/places";
 import { destinationMessage } from "@/lib/whatsapp";
@@ -125,9 +125,9 @@ export async function FeaturedStories() {
                   ? "Rijal Alma Heritage Village"
                   : d.name}
               </span>
-              <Link href={`/destinations/${d.slug}/`} className="text-link">
+              <a href={`/destinations/${d.slug}/`} className="text-link">
                 Explore <ArrowUpRight size={18} />
-              </Link>
+              </a>
               <WhatsAppLink
                 className="story-chat"
                 message={destinationMessage(d.name)}
@@ -176,7 +176,7 @@ export async function HorizontalJourney() {
           <div className="journey-track">
             {featuredDestinations.map((d) => (
               <article className="journey-card" key={d.id}>
-                <Link
+                <a
                   href={`/destinations/${d.slug}/`}
                   className="journey-photo"
                 >
@@ -195,7 +195,7 @@ export async function HorizontalJourney() {
                     </strong>
                     <ArrowUpRight size={26} />
                   </span>
-                </Link>
+                </a>
                 <WhatsAppLink
                   className="journey-chat"
                   message={destinationMessage(d.name)}
@@ -236,9 +236,9 @@ export async function Experiences() {
           <br />
           Only the one that stays with you.
         </p>
-        <Link href="#plan" className="text-link">
+        <a href="#plan" className="text-link">
           Make it your journey <ArrowUpRight size={18} />
-        </Link>
+        </a>
         <div className="experience-chapters" aria-hidden="true">
           <span className="experience-chapter is-current">01 — Mountains</span>
           <span className="experience-chapter">02 — Heritage</span>
@@ -283,13 +283,13 @@ export async function Experiences() {
               </span>
               <h3>{x.title}</h3>
               <p>{x.text}</p>
-              <Link
+              <a
                 href={`/destinations/${x.link}/`}
                 aria-label={`Explore ${x.title}`}
                 className="experience-arrow"
               >
                 <ArrowUpRight size={23} />
-              </Link>
+              </a>
             </div>
           </article>
         ))}

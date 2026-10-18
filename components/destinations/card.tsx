@@ -1,4 +1,4 @@
-import Link from "next/link";
+
 import { ArrowUpRight } from "lucide-react";
 import type { Destination } from "@/data/destinations";
 import { destinationMessage } from "@/lib/whatsapp";
@@ -12,7 +12,7 @@ export function DestinationCard({
   return (
     <article className="destination-card">
       <div className="card-photo" data-tilt>
-        <Link
+        <a
           href={`/destinations/${d.slug}/`}
           aria-label={`Explore ${d.name}`}
         >
@@ -21,7 +21,7 @@ export function DestinationCard({
             alt={d.gallery[0]?.alt ?? d.name}
             sizes="(max-width: 600px) 90vw, (max-width: 1000px) 44vw, 29vw"
           />
-        </Link>
+        </a>
         <span className="card-number">{d.sourcePage ? d.id : 'NEW'}</span>
         <WhatsAppLink
           message={destinationMessage(d.name)}
@@ -34,13 +34,13 @@ export function DestinationCard({
       <div className="card-copy">
         <span className="eyebrow">{d.category}</span>
         <h3 dir="auto">
-          <Link href={`/destinations/${d.slug}/`}>{d.name}</Link>
+          <a href={`/destinations/${d.slug}/`}>{d.name}</a>
         </h3>
         <p>{d.shortDescription}</p>
         {d.packagePrice && <p className="card-package-price"><strong>{d.packagePrice.amount} SAR</strong> · {d.packagePrice.unit}</p>}
-        <Link href={`/destinations/${d.slug}/`} className="card-explore">
+        <a href={`/destinations/${d.slug}/`} className="card-explore">
           Explore destination <ArrowUpRight size={18} />
-        </Link>
+        </a>
       </div>
     </article>
   );

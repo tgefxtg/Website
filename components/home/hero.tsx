@@ -1,4 +1,4 @@
-import Link from "next/link";
+
 import { ArrowDown, ArrowUpRight, MapPin, Compass } from "lucide-react";
 import { Photo } from "../ui/photo";
 import { WhatsAppLink } from "../ui/whatsapp-link";
@@ -33,16 +33,16 @@ export async function Hero() {
             Let your curiosity lead you to Abha.
           </p>
           <div className="hero-actions hero-reveal">
-            <Link
+            <a
               className="button button-green"
               href="/destinations/"
               data-magnetic
             >
               Explore destinations <ArrowUpRight size={18} />
-            </Link>
-            <Link className="hero-plan text-link" href="#plan">
+            </a>
+            <a className="hero-plan text-link" href="#plan">
               Plan your trip
-            </Link>
+            </a>
           </div>
         </div>
         <div className="hero-footnote">

@@ -1,4 +1,4 @@
-import Link from "next/link";
+
 import { ArrowUpRight } from "lucide-react";
 import { Brand } from "./brand";
 import { WhatsAppLink } from "../ui/whatsapp-link";
@@ -16,14 +16,14 @@ export function Footer() {
           </p>
         </div>
         <nav aria-label="Footer navigation">
-          <Link href="/destinations/">Destinations</Link>
-          <Link href="/#experiences">Experiences</Link>
-          <Link href="/#about">About us</Link>
+          <a href="/destinations/">Destinations</a>
+          <a href="/#experiences">Experiences</a>
+          <a href="/#about">About us</a>
         </nav>
         <nav aria-label="More links">
-          <Link href="/#gallery">Gallery</Link>
-          <Link href="/#plan">Plan your trip</Link>
-          <Link href="/#contact">Contact</Link>
+          <a href="/#gallery">Gallery</a>
+          <a href="/#plan">Plan your trip</a>
+          <a href="/#contact">Contact</a>
         </nav>
         <div>
           <p className="eyebrow">LET’S MAKE A MEMORY</p>
@@ -39,8 +39,8 @@ export function Footer() {
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Abha Tourist Center</span>
         <span>Made for the curious.</span>
-        <Link href="/credits/">Photography & information</Link>
-        <Link href="/admin/">Owner login</Link>
+        <a href="/credits/">Photography & information</a>
+        <a href="/admin/">Owner login</a>
       </div>
     </footer>
   );

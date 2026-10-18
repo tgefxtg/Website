@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import Link from "next/link";
+
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Brand } from "./brand";
 import { WhatsAppLink } from "../ui/whatsapp-link";
@@ -65,7 +65,7 @@ export function Header() {
         <Brand />
         <nav className="desktop-nav" aria-label="Main navigation">
           {links.map(([name, url]) => (
-            <Link
+            <a
               key={name}
               className={
                 (path.startsWith("/destinations") && name === "Destinations") ||
@@ -81,7 +81,7 @@ export function Header() {
               href={url}
             >
               {name}
-            </Link>
+            </a>
           ))}
           <a href="/admin/" className={path.startsWith("/admin") ? "active" : ""}>
             Admin panel
@@ -90,13 +90,13 @@ export function Header() {
         <WhatsAppLink className="header-chat" label="Chat on WhatsApp">
           Let’s talk
         </WhatsAppLink>
-        <Link
+        <a
           href="/#plan"
           className="button button-green nav-plan"
           data-magnetic
         >
           Plan your trip <ArrowUpRight size={17} />
-        </Link>
+        </a>
         <button
           ref={toggle}
           className="menu-toggle icon-button"
@@ -127,11 +127,11 @@ export function Header() {
         </div>
         <nav aria-label="Mobile navigation">
           {links.map(([name, url], i) => (
-            <Link key={name} href={url} onClick={close}>
+            <a key={name} href={url} onClick={close}>
               <span>0{i + 1}</span>
               {name}
               <ArrowUpRight />
-            </Link>
+            </a>
           ))}
         </nav>
         <a href="/admin/" className="button button-green" onClick={close}>

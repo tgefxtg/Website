@@ -1,4 +1,4 @@
-import Link from "next/link";
+
 import { Compass } from "lucide-react";
 export default function NotFound() {
   return (
@@ -13,9 +13,9 @@ export default function NotFound() {
       <p>
         This page couldn’t be found. Explore the destination collection to find your next journey.
       </p>
-      <Link className="button button-green" href="/destinations/">
+      <a className="button button-green" href="/destinations/">
         Explore destinations
-      </Link>
+      </a>
     </main>
   );
 }

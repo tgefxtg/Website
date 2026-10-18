@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, MapPin, Check, Compass } from "lucide-react";
 import { getPlaces, getPlace } from "@/lib/places";
@@ -50,10 +50,10 @@ export default async function DestinationPage({
         }}
       />
       <div className="detail-heading section">
-        <nav aria-label="Breadcrumb" className="breadcrumbs"><Link href="/">Home</Link><span aria-hidden="true"> / </span><Link href="/destinations/">Destinations</Link><span aria-hidden="true"> / </span><span aria-current="page">{d.name}</span></nav>
-        <Link href="/destinations/" className="back-link">
+        <nav aria-label="Breadcrumb" className="breadcrumbs"><a href="/">Home</a><span aria-hidden="true"> / </span><a href="/destinations/">Destinations</a><span aria-hidden="true"> / </span><span aria-current="page">{d.name}</span></nav>
+        <a href="/destinations/" className="back-link">
           <ArrowLeft size={16} /> Back to destinations
-        </Link>
+        </a>
         <div className="detail-title-row">
           <div>
             <span className="eyebrow">
@@ -170,10 +170,10 @@ export default async function DestinationPage({
               <em>possibilities.</em>
             </h2>
           </div>
-          <Link className="text-link" href="/destinations/">
+          <a className="text-link" href="/destinations/">
             All destinations
             <ArrowUpRight size={18} />
-          </Link>
+          </a>
         </div>
         <div className="destination-grid">
           {related.map((x) => (
