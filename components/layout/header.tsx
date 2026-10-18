@@ -83,6 +83,9 @@ export function Header() {
               {name}
             </Link>
           ))}
+          <a href="/admin/" className={path.startsWith("/admin") ? "active" : ""}>
+            Admin panel
+          </a>
         </nav>
         <WhatsAppLink className="header-chat" label="Chat on WhatsApp">
           Let’s talk
@@ -131,6 +134,9 @@ export function Header() {
             </Link>
           ))}
         </nav>
+        <a href="/admin/" className="button button-green" onClick={close}>
+          Admin panel <ArrowUpRight size={18} />
+        </a>
         <WhatsAppLink />{" "}
         <p className="eyebrow">A little closer to the extraordinary.</p>
       </dialog>
