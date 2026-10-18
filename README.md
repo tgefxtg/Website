@@ -4,14 +4,16 @@ A responsive travel website with an ivory editorial design, serif typography, 29
 
 ## Run locally
 
-Use Node.js 20.9 or newer (Node 24 recommended).
+Use Node.js 22.13 or newer (Node 24 recommended). The React/App Router site runs on Vinext and Cloudflare Workers so owner changes can be stored without rebuilding.
 
 ```sh
 npm install
+npm run build
+node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js d1 execute DB --local --config dist/server/wrangler.json --persist-to .wrangler/state --file drizzle/0000_uneven_hex.sql
 npm run dev
 ```
 
-If port 3000 is already in use, run `npm run dev -- --port 3001` and use the URL printed in the terminal.
+The local address is normally `http://127.0.0.1:5173`. Apply each local database migration only once. For local owner testing, add `ADMIN_OWNER_EMAIL="seedy@sites.test"` to an untracked `.dev.vars` file. The portable development sign-in is simulated; it is never included in the production bundle.
 
 ```sh
 npm run typecheck
@@ -19,7 +21,15 @@ npm test
 npm run build
 ```
 
-`npm run build` generates a static site in `out/`. Deploy that folder to a static host. All 29 detail routes are generated at build time. `next start` is not used for static exports. `npm run preview` serves the production export locally with Node.
+`npm run build` generates the Worker and assets in `dist/`. Publish through Sites using the existing project ID; Sites provisions D1 (`DB`), R2 (`BUCKET`) and applies the committed migrations. `npm start` previews the built Worker locally. The old static `out/` export and `scripts/check-export.mjs` are no longer deployment inputs.
+
+## Owner dashboard
+
+Open `/admin/` or use **Owner login** in the footer. Sign in with the website owner's ChatGPT account. Add or edit a place's name, category, location, introduction, description, main photo and optional package price in SAR. Changes are saved immediately to D1, with uploaded photos in R2. New places receive a destination page and are included in search, trip planning and the sitemap. Package prices are separate from reference entry-ticket fees.
+
+`ADMIN_OWNER_EMAIL` is configured as a hosted runtime secret. The first matching platform-authenticated login binds the owner's stable Site user ID in the `owners` table; subsequent access checks use that ID. Each write checks owner authorization and request origin. Price and content limits are validated server-side, uploads are size/type checked, and revision checks prevent silent concurrent overwrites.
+
+The 29 bundled records remain fallback content; database records override them. Database content and uploaded images survive deployments and are not stored in GitHub. Local test data is separate from production. Back up D1 and R2 before changing or migrating hosting.
 
 ## Content and configuration
 

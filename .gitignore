@@ -8,3 +8,7 @@ tmp/
 .sites-runtime/
 *.tar.gz
 *.log
+dist/
+.wrangler/
+.vinext/
+.dev.vars

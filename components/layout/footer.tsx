@@ -40,6 +40,7 @@ export function Footer() {
         <span>© {new Date().getFullYear()} Abha Tourist Center</span>
         <span>Made for the curious.</span>
         <Link href="/credits/">Photography & information</Link>
+        <Link href="/admin/">Owner login</Link>
       </div>
     </footer>
   );

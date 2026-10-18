@@ -22,7 +22,7 @@ export function DestinationCard({
             sizes="(max-width: 600px) 90vw, (max-width: 1000px) 44vw, 29vw"
           />
         </Link>
-        <span className="card-number">{d.id}</span>
+        <span className="card-number">{d.sourcePage ? d.id : 'NEW'}</span>
         <WhatsAppLink
           message={destinationMessage(d.name)}
           label={`Ask about ${d.name} on WhatsApp`}
@@ -37,6 +37,7 @@ export function DestinationCard({
           <Link href={`/destinations/${d.slug}/`}>{d.name}</Link>
         </h3>
         <p>{d.shortDescription}</p>
+        {d.packagePrice && <p className="card-package-price"><strong>{d.packagePrice.amount} SAR</strong> · {d.packagePrice.unit}</p>}
         <Link href={`/destinations/${d.slug}/`} className="card-explore">
           Explore destination <ArrowUpRight size={18} />
         </Link>

@@ -2,7 +2,9 @@ import Link from "next/link";
 import { ArrowDown, ArrowUpRight, MapPin, Compass } from "lucide-react";
 import { Photo } from "../ui/photo";
 import { WhatsAppLink } from "../ui/whatsapp-link";
-export function Hero() {
+import { getPlace } from "@/lib/places";
+export async function Hero() {
+  const village = await getPlace('rijal-alma');
   return (
     <section className="magazine-hero" aria-labelledby="hero-title">
       <div className="magazine-hero-copy">
@@ -46,8 +48,8 @@ export function Hero() {
         <div className="hero-footnote">
           <span className="hero-small-photo">
             <Photo
-              src="/images/destinations/rijal-alma-selected.webp"
-              alt="Traditional stone architecture in Rijal Alma"
+              src={village?.image ?? null}
+              alt={village?.name ?? "Rijal Alma"}
               sizes="160px"
             />
           </span>

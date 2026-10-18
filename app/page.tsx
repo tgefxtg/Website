@@ -13,12 +13,15 @@ import { Contact } from "@/components/home/contact";
 import { DestinationExplorer } from "@/components/destinations/explorer";
 import { Gallery } from "@/components/ui/gallery";
 import { Testimonials } from "@/components/ui/testimonials";
-import { destinations, getDestination } from "@/data/destinations";
+import { getPlaces } from "@/lib/places";
 import { site } from "@/lib/site";
+export const dynamic = "force-dynamic";
+export default async function Home() {
+const destinations = await getPlaces();
 const gallery = [
   destinations[6],
   destinations[1],
-  getDestination("wadi-lajab")!,
+  destinations.find(d=>d.slug==='wadi-lajab')!,
   destinations[4],
   destinations[12],
   destinations[22],
@@ -30,7 +33,6 @@ const gallery = [
   caption: d.id === "07" ? "Rijal Alma" : d.name,
   category: d.category,
 }));
-export default function Home() {
   return (
     <main id="main">
       <script
@@ -72,10 +74,10 @@ export default function Home() {
             find the places that feel like you.
           </p>
         </div>
-        <DestinationExplorer compact />
+        <DestinationExplorer compact destinations={destinations} />
       </section>
       <Experiences />
-      <TripPlanner />
+      <TripPlanner destinations={destinations} />
       <section className="section gallery-section" id="gallery">
         <div className="section-heading">
           <div>
@@ -95,7 +97,7 @@ export default function Home() {
       </section>
       <About />
       <Testimonials />
-      <Contact />
+      <Contact destinations={destinations} />
     </main>
   );
 }

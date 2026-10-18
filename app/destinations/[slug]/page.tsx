@@ -2,24 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, MapPin, Check, Compass } from "lucide-react";
-import { destinations, getDestination } from "@/data/destinations";
+import { getPlaces, getPlace } from "@/lib/places";
 import { Photo } from "@/components/ui/photo";
 import { WhatsAppLink } from "@/components/ui/whatsapp-link";
 import { Gallery } from "@/components/ui/gallery";
 import { DestinationCard } from "@/components/destinations/card";
 import { destinationMessage } from "@/lib/whatsapp";
 import { site } from "@/lib/site";
-export const dynamicParams = false;
-export function generateStaticParams() {
-  return destinations.map((d) => ({ slug: d.slug }));
-}
+export const dynamic = "force-dynamic";
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const d = getDestination(slug);
+  const d = await getPlace(slug);
   if (!d) return { title: "Destination not found" };
   return {
     title: d.name,
@@ -44,9 +41,9 @@ export default async function DestinationPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const d = getDestination(slug);
+  const d = await getPlace(slug);
   if (!d) notFound();
-  const related = destinations
+  const related = (await getPlaces())
     .filter((x) => x.id !== d.id && x.tags.some((t) => d.tags.includes(t)))
     .slice(0, 3);
   const schema = {
@@ -72,7 +69,7 @@ export default async function DestinationPage({
         <div className="detail-title-row">
           <div>
             <span className="eyebrow">
-              THE COLLECTION / {d.id} / {d.category}
+              THE COLLECTION / {d.sourcePage ? d.id : 'NEW'} / {d.category}
             </span>
             <h1 dir="auto">{d.name}</h1>
             {d.arabicName && d.arabicName !== d.name && (
@@ -102,7 +99,7 @@ export default async function DestinationPage({
             <em>to discover.</em>
           </h2>
           <p>{d.description}</p>
-          <h3>The moments to look for</h3>
+          {d.highlights.length > 0 && <h3>The moments to look for</h3>}
           <ul className="highlights">
             {d.highlights.map((x) => (
               <li key={x}>
@@ -119,6 +116,7 @@ export default async function DestinationPage({
             <br />
             of your journey.
           </h3>
+          {d.packagePrice && <div className="ticket-information"><span className="eyebrow">PACKAGE PRICE</span><p><strong>{d.packagePrice.amount} SAR</strong> <span>{d.packagePrice.unit}</span></p></div>}
           {d.ticketPrice && (
             <div className="ticket-information">
               <span className="eyebrow">REFERENCE ENTRY PRICE</span>

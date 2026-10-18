@@ -38,6 +38,7 @@ export interface Destination {
     note?: string;
   };
   featured: boolean;
+  packagePrice?: { amount: number; currency: string; unit: string };
   mapUrl: string | null;
   latitude?: number;
   longitude?: number;

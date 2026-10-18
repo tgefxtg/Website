@@ -1,0 +1,117 @@
+import { env } from "cloudflare:workers";
+import { isOwner, sameOrigin } from "@/lib/admin-auth";
+import { getPlace } from "@/lib/places";
+import { validatePlace } from "@/lib/place-validation";
+import { boundedText } from "@/lib/request-body";
+export async function POST(request: Request) {
+  if (!sameOrigin(request))
+    return Response.json(
+      { error: "Request origin rejected." },
+      { status: 403 },
+    );
+  if (!(await isOwner()))
+    return Response.json(
+      { error: "Please sign in as the owner." },
+      { status: 403 },
+    );
+  if (!env.DB || !env.BUCKET)
+    return Response.json({ error: "Storage unavailable." }, { status: 503 });
+  try {
+    const body = await boundedText(request);
+    const input = JSON.parse(body),
+      value = validatePlace(input);
+    const slug =
+      input.slug === ""
+        ? `${
+            value.name
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, "-")
+              .replace(/^-|-$/g, "")
+              .slice(0, 65) || "place"
+          }-${crypto.randomUUID().slice(0, 8)}`
+        : input.slug;
+    if (typeof slug !== "string" || !/^[a-z0-9-]{1,100}$/.test(slug))
+      throw new Error("Invalid place link.");
+    const existing = await getPlace(slug);
+    if (input.slug && !existing)
+      return Response.json({ error: "Place not found." }, { status: 404 });
+    if (existing && existing.revision !== value.revision)
+      return Response.json(
+        {
+          error:
+            "This place changed in another window. Reload before editing again.",
+        },
+        { status: 409 },
+      );
+    if (
+      value.image.startsWith("/media/") &&
+      !(await env.BUCKET.head(value.image.slice(7)))
+    )
+      throw new Error("Upload the photo again.");
+    if (value.image.startsWith("/images/") && value.image !== existing?.image)
+      throw new Error("Upload a new photo to change the image.");
+    const { price, unit, revision, ...fields } = value;
+    const record = {
+      ...existing,
+      ...fields,
+      slug,
+      id: existing?.id ?? slug,
+      featured: existing?.featured ?? false,
+      mapUrl: existing?.mapUrl ?? null,
+      sourcePage: existing?.sourcePage ?? 0,
+      tags: [
+        ...new Set([
+          value.category,
+          ...(existing?.tags.filter((t) => t !== existing.category) ?? []),
+        ]),
+      ],
+      highlights: existing?.highlights ?? [],
+      gallery:
+        existing?.image === value.image
+          ? existing.gallery
+          : [
+              { src: value.image, alt: value.name, width: 1920, height: 1280 },
+              ...(existing?.gallery.slice(1) ?? []),
+            ],
+      packagePrice:
+        price === null ? undefined : { amount: price, currency: "SAR", unit },
+    };
+    const content = JSON.stringify(record);
+    const result =
+      revision === 0
+        ? await env.DB.prepare(
+            "INSERT OR IGNORE INTO places(slug,content,revision) VALUES(?,?,1)",
+          )
+            .bind(slug, content)
+            .run()
+        : await env.DB.prepare(
+            "UPDATE places SET content=?, revision=revision+1 WHERE slug=? AND revision=?",
+          )
+            .bind(content, slug, revision)
+            .run();
+    if (result.meta.changes !== 1)
+      return Response.json(
+        {
+          error:
+            "This place changed in another window. Reload before editing again.",
+        },
+        { status: 409 },
+      );
+    return Response.json(
+      { place: { ...record, revision: revision + 1 } },
+      { headers: { "Cache-Control": "no-store" } },
+    );
+  } catch (error) {
+    return Response.json(
+      {
+        error:
+          error instanceof SyntaxError
+            ? "Invalid place data."
+            : error instanceof Error
+              ? error.message
+              : "Could not save this place.",
+      },
+      { status: 400 },
+    );
+  }
+}

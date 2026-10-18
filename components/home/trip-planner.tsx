@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { Check, Plus, Compass, ArrowUpRight } from "lucide-react";
-import { destinations } from "@/data/destinations";
+import type { Destination } from "@/data/destinations";
 import { tripMessage } from "@/lib/whatsapp";
 import { Photo } from "../ui/photo";
 import { WhatsAppLink } from "../ui/whatsapp-link";
@@ -15,7 +15,7 @@ const interests = [
   "Mountains",
   "Relaxation",
 ];
-export function TripPlanner() {
+export function TripPlanner({destinations}:{destinations:Destination[]}) {
   const [selected, setSelected] = useState<string[]>([]);
   const [places, setPlaces] = useState<string[]>([]);
   useEffect(
@@ -81,7 +81,7 @@ export function TripPlanner() {
           };
         },
       }),
-    [],
+    [destinations],
   );
   const recommended = useMemo(
     () =>
@@ -92,7 +92,7 @@ export function TripPlanner() {
             : d.featured,
         )
         .slice(0, 6),
-    [selected],
+    [selected, destinations],
   );
   const toggleInterest = (name: string) =>
     setSelected((old) =>

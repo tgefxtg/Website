@@ -4,5 +4,5 @@ export const site = {
     process.env.NEXT_PUBLIC_SITE_URL ||
     "https://abha-tourist-center.shoneclg.chatgpt.site",
   description:
-    "Discover 29 places around Abha, Aseer and beyond. Explore cloud-covered mountains, heritage villages and family escapes, and plan your journey on WhatsApp.",
+    "Discover places around Abha, Aseer and beyond. Explore cloud-covered mountains, heritage villages and family escapes, and plan your journey on WhatsApp.",
 };

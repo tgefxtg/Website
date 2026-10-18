@@ -1,11 +1,11 @@
 "use client";
 import { FormEvent } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { destinations } from "@/data/destinations";
+import type { Destination } from "@/data/destinations";
 import { whatsappUrl, DISPLAY_PHONE } from "@/lib/whatsapp";
 import { WhatsAppLink } from "../ui/whatsapp-link";
 import { WhatsAppIcon } from "../ui/icons";
-export function Contact() {
+export function Contact({destinations}:{destinations:Destination[]}) {
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);

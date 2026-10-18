@@ -1,12 +1,14 @@
 "use client";
 import { useMemo, useState } from "react";
 import { Search, X } from "lucide-react";
-import { categories, destinations, type Category } from "@/data/destinations";
+import { categories, type Destination, type Category } from "@/data/destinations";
 import { DestinationCard } from "./card";
 export function DestinationExplorer({
   compact = false,
+  destinations,
 }: {
   compact?: boolean;
+  destinations: Destination[];
 }) {
   const [category, setCategory] = useState<Category>("All");
   const [query, setQuery] = useState("");
@@ -20,7 +22,7 @@ export function DestinationExplorer({
             .toLowerCase()
             .includes(query.trim().toLowerCase()),
       ),
-    [category, query],
+    [category, query, destinations],
   );
   const visible = compact && !expanded ? results.slice(0, 6) : results;
   return (

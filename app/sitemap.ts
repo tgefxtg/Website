@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
-import { destinations } from "@/data/destinations";
+import { getPlaces } from "@/lib/places";
 import { site } from "@/lib/site";
-export const dynamic = "force-static";
-export default function sitemap(): MetadataRoute.Sitemap {
+export const dynamic = "force-dynamic";
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const destinations = await getPlaces();
   return [
     { url: site.url, priority: 1 },
     { url: `${site.url}/destinations/`, priority: 0.9 },

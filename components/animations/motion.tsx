@@ -7,6 +7,7 @@ import { startMotion } from "./runtime";
 export function Motion() {
   const pathname = usePathname();
   useEffect(() => {
+    if (pathname.startsWith('/admin')) { document.documentElement.dataset.motion = 'reduced'; return; }
     // Motion runs automatically on every route, including for returning visitors
     // who previously saved an off preference using the removed control.
     document.documentElement.dataset.motion = "full";

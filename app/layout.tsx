@@ -6,6 +6,7 @@ import { site } from "@/lib/site";
 import { locales, activeLocale } from "@/lib/i18n";
 import { Motion } from "@/components/animations/motion";
 import "./globals.css";
+import "../styles/admin.css";
 const heading = localFont({
   src: [
     {

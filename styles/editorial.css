@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@fontsource/noto-sans-arabic/400.css";
+@font-face { font-family: "Noto Sans Arabic"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/noto-sans-arabic-arabic-400-normal.woff2") format("woff2"); }
 
 :root {
   --cream: #f8f6ef;

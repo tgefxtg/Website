@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { ArrowUpRight, Mountain, Leaf, Landmark, Sparkles } from "lucide-react";
-import { destinations, featuredDestinations } from "@/data/destinations";
+import { getPlaces } from "@/lib/places";
 import { destinationMessage } from "@/lib/whatsapp";
 import { Photo } from "../ui/photo";
 import { WhatsAppLink } from "../ui/whatsapp-link";
-export function Introduction() {
+export async function Introduction() {
+  const destinations = await getPlaces();
   return (
     <section id="intro" className="section editorial-intro">
       <span className="eyebrow section-kicker">
@@ -49,7 +50,8 @@ export function Introduction() {
     </section>
   );
 }
-export function FeaturedStories() {
+export async function FeaturedStories() {
+  const destinations = await getPlaces();
   const stories = [destinations[2], destinations[6], destinations[1]];
   const headings = [
     <>
@@ -105,8 +107,8 @@ export function FeaturedStories() {
         <article className={`feature-story story-${i}`} key={d.id}>
           <div className="feature-image">
             <Photo
-              src={i === 0 ? d.gallery[1].src : d.image}
-              alt={i === 0 ? d.gallery[1].alt : d.gallery[0].alt}
+              src={d.image}
+              alt={d.gallery[0].alt}
               sizes="(max-width: 800px) 100vw, 58vw"
             />
             <span className="feature-image-index">0{i + 1} / 03</span>
@@ -140,7 +142,9 @@ export function FeaturedStories() {
     </section>
   );
 }
-export function HorizontalJourney() {
+export async function HorizontalJourney() {
+  const destinations = await getPlaces();
+  const featuredDestinations = destinations.filter(d=>d.featured);
   return (
     <section
       id="journey"
@@ -216,7 +220,8 @@ export function HorizontalJourney() {
     </section>
   );
 }
-export function Experiences() {
+export async function Experiences() {
+  const destinations = await getPlaces();
   return (
     <section id="experiences" className="section experiences">
       <div className="experiences-heading">
@@ -292,7 +297,8 @@ export function Experiences() {
     </section>
   );
 }
-export function About() {
+export async function About() {
+  const destinations = await getPlaces();
   return (
     <section id="about" className="section about-section">
       <div className="about-image" data-image-reveal>
