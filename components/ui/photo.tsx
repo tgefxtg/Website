@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { useState } from "react";
 import { ImageOff } from "lucide-react";
 export function Photo({
@@ -25,13 +24,18 @@ export function Photo({
       </div>
     );
   return (
-    <Image
+    <img
       className={className}
       src={src}
+      srcSet={src.startsWith("/images/destinations/") ? [320,480,640,960,1280,1920].map(w => `${src.replace(/\.webp$/, `-${w}.webp`)} ${w}w`).join(", ") : undefined}
       alt={alt}
-      fill
+      width={1920}
+      height={1280}
+      style={{position: "absolute", inset: 0, width: "100%", height: "100%"}}
       sizes={sizes}
-      preload={priority}
+      loading={priority ? "eager" : "lazy"}
+      decoding="async"
+      fetchPriority={priority ? "high" : undefined}
       onError={() => setFailed(true)}
     />
   );

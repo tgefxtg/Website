@@ -54,7 +54,7 @@ export function entranceMotion(gsap: GSAP, compact = false) {
   });
   document.querySelectorAll("[data-scroll-words]").forEach((el) => {
     gsap.from(el.querySelectorAll("span"), {
-      opacity: 0.2,
+      opacity: 0.65,
       stagger: 0.15,
       ease: "none",
       scrollTrigger: {
@@ -156,7 +156,7 @@ export function entranceMotion(gsap: GSAP, compact = false) {
   if (footer)
     gsap.from(footer, {
       yPercent: 45,
-      opacity: 0.3,
+      opacity: 0.65,
       ease: "none",
       scrollTrigger: {
         trigger: footer,

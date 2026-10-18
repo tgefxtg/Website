@@ -11,8 +11,7 @@ export default function NotFound() {
         <em>your way back.</em>
       </h1>
       <p>
-        This page couldn’t be found. There are still thirty places waiting to be
-        discovered.
+        This page couldn’t be found. Explore the destination collection to find your next journey.
       </p>
       <Link className="button button-green" href="/destinations/">
         Explore destinations

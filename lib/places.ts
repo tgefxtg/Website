@@ -1,10 +1,11 @@
 import { env } from "cloudflare:workers";
+import { cache } from "react";
 import {
   destinations as original,
   type Destination,
 } from "@/data/destinations";
 export type ManagedPlace = Destination & { revision: number };
-export async function getPlaces(): Promise<ManagedPlace[]> {
+export const getPlaces = cache(async (): Promise<ManagedPlace[]> => {
   if (!env.DB) throw new Error("Place storage is unavailable");
   const { results } = await env.DB.prepare(
     "SELECT content, revision FROM places ORDER BY rowid",
@@ -17,7 +18,7 @@ export async function getPlaces(): Promise<ManagedPlace[]> {
     merged.set(d.slug, { ...d, revision: row.revision });
   }
   return [...merged.values()];
-}
+});
 export async function getPlace(slug: string) {
   return (await getPlaces()).find((d) => d.slug === slug);
 }

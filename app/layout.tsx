@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { Header } from "@/components/layout/header";
 import { Footer, FloatingEnquiry } from "@/components/layout/footer";
 import { site } from "@/lib/site";
+import { pageMetadata, jsonLd } from "@/lib/seo";
 import { locales, activeLocale } from "@/lib/i18n";
 import { Motion } from "@/components/animations/motion";
 import "./globals.css";
@@ -60,22 +61,14 @@ const editorial = localFont({
   display: "swap",
 });
 export const metadata: Metadata = {
+  ...pageMetadata("Abha & Aseer Travel Guide | Abha Tourist Center", site.description, "/"),
   metadataBase: new URL(site.url),
   title: {
-    default: "Abha Tourist Center — Somewhere above the ordinary",
+    default: "Abha & Aseer Travel Guide | Abha Tourist Center",
     template: "%s | Abha Tourist Center",
   },
   description: site.description,
   alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    siteName: site.name,
-    title: "Abha Tourist Center",
-    description: site.description,
-    url: "/",
-  },
-  twitter: { card: "summary", title: site.name, description: site.description },
   icons: { icon: "/favicon.svg" },
 };
 export default function RootLayout({
@@ -92,6 +85,10 @@ export default function RootLayout({
           Skip to content
         </a>
         <Motion />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd({ "@context": "https://schema.org", "@graph": [
+          { "@type": "Organization", "@id": `${site.url}/#organization`, name: site.name, url: `${site.url}/`, telephone: "+966536493716" },
+          { "@type": "WebSite", "@id": `${site.url}/#website`, name: site.name, url: `${site.url}/`, publisher: { "@id": `${site.url}/#organization` } }
+        ] }) }} />
         <Header />
         {children}
         <Footer />

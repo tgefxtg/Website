@@ -1,10 +1,5 @@
-import type { Metadata } from "next";
-export const metadata: Metadata = {
-  title: "Photography & information",
-  description:
-    "Sources and image credits for the Abha Tourist Center destination collection.",
-  alternates: { canonical: "/credits/" },
-};
+import { pageMetadata } from "@/lib/seo";
+export const metadata = pageMetadata("Photography & Information", "Photography credits, image licenses and source information for the Abha Tourist Center destination collection.", "/credits/");
 export default function Credits() {
   return (
     <main id="main" className="section credits-page">

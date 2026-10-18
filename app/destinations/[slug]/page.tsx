@@ -9,6 +9,7 @@ import { Gallery } from "@/components/ui/gallery";
 import { DestinationCard } from "@/components/destinations/card";
 import { destinationMessage } from "@/lib/whatsapp";
 import { site } from "@/lib/site";
+import { pageMetadata, pageSchema, jsonLd } from "@/lib/seo";
 export const dynamic = "force-dynamic";
 export async function generateMetadata({
   params,
@@ -18,22 +19,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const d = await getPlace(slug);
   if (!d) return { title: "Destination not found" };
-  return {
-    title: d.name,
-    description: d.shortDescription,
-    alternates: { canonical: `/destinations/${slug}/` },
-    openGraph: {
-      title: `${d.name} | Abha Tourist Center`,
-      description: d.shortDescription,
-      url: `/destinations/${slug}/`,
-      ...(d.image ? { images: [{ url: d.image, alt: d.gallery[0].alt }] } : {}),
-    },
-    twitter: {
-      title: d.name,
-      description: d.shortDescription,
-      ...(d.image ? { images: [d.image] } : {}),
-    },
-  };
+  return pageMetadata(d.name, d.shortDescription, `/destinations/${slug}/`, d.image ?? undefined);
 }
 export default async function DestinationPage({
   params,
@@ -49,6 +35,7 @@ export default async function DestinationPage({
   const schema = {
     "@context": "https://schema.org",
     "@type": "TouristAttraction",
+    "@id": `${site.url}/destinations/${slug}/#place`,
     name: d.name,
     description: d.shortDescription,
     url: `${site.url}/destinations/${slug}/`,
@@ -59,10 +46,11 @@ export default async function DestinationPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schema).replace(/</g, "\\u003c"),
+          __html: jsonLd({ "@context": "https://schema.org", "@graph": [schema, { ...pageSchema(d.name, `/destinations/${slug}/`), mainEntity: { "@id": schema["@id"] } }, { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` }, { "@type": "ListItem", position: 2, name: "Destinations", item: `${site.url}/destinations/` }, { "@type": "ListItem", position: 3, name: d.name, item: schema.url }] }] }),
         }}
       />
       <div className="detail-heading section">
+        <nav aria-label="Breadcrumb" className="breadcrumbs"><Link href="/">Home</Link><span aria-hidden="true"> / </span><Link href="/destinations/">Destinations</Link><span aria-hidden="true"> / </span><span aria-current="page">{d.name}</span></nav>
         <Link href="/destinations/" className="back-link">
           <ArrowLeft size={16} /> Back to destinations
         </Link>

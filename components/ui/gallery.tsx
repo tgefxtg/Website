@@ -46,7 +46,6 @@ export function Gallery({
               trigger.current = e.currentTarget;
               setActive(i);
             }}
-            aria-label={`View photo: ${item.caption}`}
           >
             <Photo
               src={item.src}

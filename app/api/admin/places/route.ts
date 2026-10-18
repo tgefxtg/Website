@@ -68,7 +68,7 @@ export async function POST(request: Request) {
       highlights: existing?.highlights ?? [],
       gallery:
         existing?.image === value.image
-          ? existing.gallery
+          ? existing.gallery.map((photo, index) => index === 0 ? { ...photo, alt: value.name } : photo)
           : [
               { src: value.image, alt: value.name, width: 1920, height: 1280 },
               ...(existing?.gallery.slice(1) ?? []),

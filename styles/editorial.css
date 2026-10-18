@@ -6,7 +6,7 @@
   --ivory: #efeee5;
   --green: #294d3c;
   --ink: #263f32;
-  --muted: #687367;
+  --muted: #596655;
   --line: #d9dccf;
   --purple: #82709a;
   --lime: #dfe5be;
@@ -226,6 +226,8 @@ textarea:focus-visible {
 }
 
 /* A quiet, magazine-like masthead. */
+.breadcrumbs { margin-bottom: 24px; font-size: 0.875rem; line-height: 1.8; overflow-wrap: anywhere; }
+.breadcrumbs a { text-decoration: underline; text-underline-offset: 4px; }
 .site-header {
   height: 90px;
   display: flex;

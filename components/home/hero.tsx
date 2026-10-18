@@ -15,14 +15,14 @@ export async function Hero() {
         <div className="hero-content">
           <h1 id="hero-title">
             <span className="hero-line">
-              <span>Somewhere</span>
+              <span>Explore Abha.</span>
             </span>
             <span className="hero-line">
-              <span>above the</span>
+              <span>Discover</span>
             </span>
             <span className="hero-line">
               <span>
-                <em>ordinary.</em>
+                <em>Aseer.</em>
               </span>
             </span>
           </h1>

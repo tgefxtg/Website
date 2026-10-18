@@ -14,7 +14,7 @@ import { DestinationExplorer } from "@/components/destinations/explorer";
 import { Gallery } from "@/components/ui/gallery";
 import { Testimonials } from "@/components/ui/testimonials";
 import { getPlaces } from "@/lib/places";
-import { site } from "@/lib/site";
+import { jsonLd, pageSchema } from "@/lib/seo";
 export const dynamic = "force-dynamic";
 export default async function Home() {
 const destinations = await getPlaces();
@@ -38,18 +38,7 @@ const gallery = [
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "TravelAgency",
-            name: site.name,
-            url: site.url,
-            telephone: "+966536493716",
-            description: site.description,
-            areaServed: [
-              { "@type": "Place", name: "Abha" },
-              { "@type": "Place", name: "Aseer" },
-            ],
-          }),
+          __html: jsonLd(pageSchema("Abha & Aseer Travel Guide", "/")),
         }}
       />
       <Hero />

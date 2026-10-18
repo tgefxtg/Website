@@ -1,35 +1,21 @@
-import type { Metadata } from "next";
+import { pageMetadata, pageSchema, jsonLd } from "@/lib/seo";
 import { DestinationExplorer } from "@/components/destinations/explorer";
 import { WhatsAppLink } from "@/components/ui/whatsapp-link";
 import { getPlaces } from "@/lib/places";
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = {
-  title: "Places to discover in Abha & Aseer",
-  description:
-    "Find your next escape: mountains, heritage villages, farms, parks and waterfalls around Abha, Aseer and nearby Jazan.",
-  alternates: { canonical: "/destinations/" },
-  openGraph: {
-    title: "Places to discover in Abha & Aseer",
-    description:
-      "Explore mountains, villages, farms, parks and waterfalls, and plan your journey with Abha Tourist Center.",
-    url: "/destinations/",
-  },
-  twitter: {
-    title: "Places to discover in Abha & Aseer",
-    description: "A collection of mountain escapes, farms and heritage places.",
-  },
-};
+export const metadata = pageMetadata("Places to Visit in Abha & Aseer", "Explore mountains, heritage villages, farms, parks and waterfalls around Abha, Aseer and nearby Jazan. Find places and plan your trip on WhatsApp.", "/destinations/");
 export default async function Destinations() {
   const destinations = await getPlaces();
   return (
     <main id="main" className="section destinations-page">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(pageSchema("Places to Visit in Abha & Aseer", "/destinations/")) }} />
       <div className="section-heading">
         <div>
           <span className="eyebrow">THE ABHA & ASEER COLLECTION</span>
           <h1>
-            {destinations.length} places.
+            Places in Abha & Aseer.
             <br />
-            <em>Your next chapter.</em>
+            <em>{destinations.length} places to explore.</em>
           </h1>
         </div>
         <p>

@@ -2,36 +2,46 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
-import { startMotion } from "./runtime";
 
 export function Motion() {
   const pathname = usePathname();
   useEffect(() => {
     if (pathname.startsWith('/admin')) { document.documentElement.dataset.motion = 'reduced'; return; }
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
     // Motion runs automatically on every route, including for returning visitors
     // who previously saved an off preference using the removed control.
-    document.documentElement.dataset.motion = "full";
+    document.documentElement.dataset.motion = preference.matches ? "reduced" : "full";
     let disposed = false;
     let cleanup = () => {};
     async function init() {
-      const [{ gsap }, { ScrollTrigger }, { default: Lenis }] =
+      const [{ gsap }, { ScrollTrigger }, { default: Lenis }, { startMotion }] =
         await Promise.all([
           import("gsap"),
           import("gsap/ScrollTrigger"),
           import("lenis"),
+          import("./runtime"),
         ]);
-      if (disposed) return;
+      if (disposed || preference.matches) return;
       cleanup = startMotion(gsap, ScrollTrigger, Lenis);
     }
-    init().catch((error) => {
+    const initialize = () => init().catch((error) => {
       cleanup();
       if (!disposed) {
         console.error("Animation setup failed; restoring static content.", error);
         document.documentElement.dataset.motion = "reduced";
       }
     });
+    const updatePreference = () => {
+      cleanup();
+      cleanup = () => {};
+      document.documentElement.dataset.motion = preference.matches ? "reduced" : "full";
+      if (!preference.matches) initialize();
+    };
+    if (!preference.matches) initialize();
+    preference.addEventListener("change", updatePreference);
     return () => {
       disposed = true;
+      preference.removeEventListener("change", updatePreference);
       cleanup();
     };
   }, [pathname]);
