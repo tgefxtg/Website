@@ -27,3 +27,12 @@ export const getPlaces = cache(async (): Promise<ManagedPlace[]> => {
 export async function getPlace(slug: string) {
   return (await getPlaces()).find((d) => d.slug === slug);
 }
+// Only pass this list to the owner-authenticated admin page.
+export async function getDeletedPlaces(): Promise<ManagedPlace[]> {
+  if (!env.DB) throw new Error("Place storage is unavailable");
+  const { results } = await env.DB.prepare("SELECT content, revision FROM places ORDER BY rowid").all<{content: string; revision: number}>();
+  return results.flatMap(row => {
+    const record = JSON.parse(row.content);
+    return record.deleted === true ? [{ ...record, revision: row.revision }] : [];
+  });
+}

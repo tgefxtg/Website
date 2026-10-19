@@ -38,10 +38,12 @@ const empty: Draft = {
 };
 export function AdminPanel({
   initialPlaces,
+  initialDeletedPlaces,
   ownerName,
   signOutUrl,
 }: {
   initialPlaces: ManagedPlace[];
+  initialDeletedPlaces: ManagedPlace[];
   ownerName: string;
   signOutUrl: string;
 }) {
@@ -54,13 +56,14 @@ export function AdminPanel({
     [message, setMessage] = useState(""),
     [dirty, setDirty] = useState(false);
   const formRef = useRef<HTMLElement>(null);
+  const [deletedPlaces, setDeletedPlaces] = useState(initialDeletedPlaces);
+  const [pendingDelete, setPendingDelete] = useState<string | null>(null);
   const [deleteNotice, setDeleteNotice] = useState("");
   const [deleteError, setDeleteError] = useState("");
   const collectionHeading = useRef<HTMLHeadingElement>(null);
   async function remove(place: ManagedPlace) {
     if (busy || uploading) return;
     if (dirty && !window.confirm("Discard your unsaved changes?")) return;
-    if (!window.confirm(`Delete “${place.name}”? This removes the entire place and its package from the website, including the destination page. To remove only the price, use Edit place and clear the price instead.`)) return;
     setBusy(true);
     setDeleteError("");
     setDeleteNotice("");
@@ -73,6 +76,8 @@ export function AdminPanel({
       const result = await response.json() as { error?: string };
       if (!response.ok) throw new Error(result.error || "Could not delete this package.");
       setPlaces((old) => old.filter((p) => p.slug !== place.slug));
+      setDeletedPlaces(old => [...old, { ...place, revision: place.revision + 1 }]);
+      setPendingDelete(null);
       setDraft(null);
       setDirty(false);
       setDeleteNotice(`${place.name} has been removed from your website.`);
@@ -82,6 +87,20 @@ export function AdminPanel({
     } finally {
       setBusy(false);
     }
+  }
+  async function restore(place: ManagedPlace) {
+    if (busy || uploading) return;
+    setBusy(true); setDeleteError(""); setDeleteNotice("");
+    try {
+      const response = await fetch("/api/admin/places", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({slug: place.slug, revision: place.revision}) });
+      const result = await response.json() as { error?: string; place: ManagedPlace };
+      if (!response.ok) throw new Error(result.error || "Could not restore this package.");
+      setPlaces(old => [...old, result.place]);
+      setDeletedPlaces(old => old.filter(p => p.slug !== place.slug));
+      setDeleteNotice(`${place.name} has been restored to your website.`);
+      collectionHeading.current?.focus();
+    } catch (e) { setDeleteError(e instanceof Error ? e.message : "Could not restore this package."); }
+    finally { setBusy(false); }
   }
   useEffect(() => {
     if (!dirty) return;
@@ -487,9 +506,16 @@ export function AdminPanel({
                     Edit place <ArrowUpRight size={16} />
                   </button>
                   <button className="text-link admin-delete" disabled={busy || uploading}
-                    aria-label={`Delete package: ${p.name}`} onClick={() => void remove(p)}>
+                    aria-label={`Delete package: ${p.name}`} onClick={() => setPendingDelete(p.slug)}>
                     Delete package <Trash2 size={16} />
                   </button></div>
+                  {pendingDelete === p.slug && <div className="admin-delete-confirm" role="group" aria-label={`Confirm deletion of ${p.name}`}>
+                    <p>Remove {p.name} and its package from the website? You can restore it from Deleted packages.</p>
+                    <div className="admin-place-actions">
+                      <button disabled={busy || uploading} onClick={() => setPendingDelete(null)}>Cancel</button>
+                      <button className="admin-delete" disabled={busy || uploading} onClick={() => void remove(p)}>Confirm delete</button>
+                    </div>
+                  </div>}
                 </div>
               </article>
             ))}
@@ -500,6 +526,14 @@ export function AdminPanel({
             .includes(query.toLowerCase()),
         ) && <p>No places match your search.</p>}
       </section>
+      {deletedPlaces.length > 0 && <section className="admin-collection" aria-label="Deleted packages">
+        <h2>Deleted packages</h2>
+        <p>Removed from your public website. Restore a package to bring it back.</p>
+        {deletedPlaces.map(p => <div className="admin-deleted-row" key={p.slug}>
+          <span>{p.name}</span>
+          <button className="text-link" disabled={busy || uploading} onClick={() => void restore(p)} aria-label={`Restore package: ${p.name}`}>Restore package</button>
+        </div>)}
+      </section>}
     </main>
   );
 }

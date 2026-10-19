@@ -1,8 +1,25 @@
 import { env } from "cloudflare:workers";
 import { isOwner, sameOrigin } from "@/lib/admin-auth";
-import { getPlace } from "@/lib/places";
+import { getPlace, getDeletedPlaces } from "@/lib/places";
 import { validatePlace } from "@/lib/place-validation";
 import { boundedText } from "@/lib/request-body";
+export async function PATCH(request: Request) {
+  if (!sameOrigin(request) || !(await isOwner()))
+    return Response.json({ error: "Please sign in as the owner." }, { status: 403 });
+  if (!env.DB) return Response.json({ error: "Storage unavailable." }, { status: 503 });
+  try {
+    const { slug, revision } = JSON.parse(await boundedText(request));
+    if (typeof slug !== "string" || !Number.isSafeInteger(revision) || revision < 1)
+      return Response.json({ error: "Invalid place data." }, { status: 400 });
+    const record = (await getDeletedPlaces()).find(p => p.slug === slug);
+    if (!record) return Response.json({ error: "Deleted package not found." }, { status: 404 });
+    if (record.revision !== revision) return Response.json({ error: "This package changed. Reload before restoring." }, { status: 409 });
+    const restored = { ...record, deleted: false };
+    const result = await env.DB.prepare("UPDATE places SET content=?, revision=revision+1 WHERE slug=? AND revision=?").bind(JSON.stringify(restored), slug, revision).run();
+    if (result.meta.changes !== 1) return Response.json({ error: "This package changed. Reload before restoring." }, { status: 409 });
+    return Response.json({ place: { ...restored, revision: revision + 1 } }, { headers: { "Cache-Control": "no-store" } });
+  } catch { return Response.json({ error: "Could not restore this package." }, { status: 400 }); }
+}
 export async function DELETE(request: Request) {
   if (!sameOrigin(request) || !(await isOwner()))
     return Response.json({ error: "Please sign in as the owner." }, { status: 403 });

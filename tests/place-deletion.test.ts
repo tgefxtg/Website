@@ -44,5 +44,12 @@ test('owner deletion persists for bundled and saved places, rejects stale/unauth
     assert.equal((await remove('custom-place',0)).status,409);
     assert.equal((await remove('custom-place',1)).status,200);
     assert.equal((await places.getPlaces()).length,0);
+    const restore = (revision: number) => route.PATCH(new Request('https://example.test/api/admin/places', {method:'PATCH',headers:{Origin:'https://example.test'},body:JSON.stringify({slug:'bundled-place',revision})}));
+    owner = false; assert.equal((await restore(1)).status,403);
+    owner = true; assert.equal((await restore(99)).status,409);
+    assert.equal((await restore(1)).status,200);
+    assert.equal((await places.getPlace('bundled-place')).name,'Bundled place');
+    assert.equal((await places.getPlace('bundled-place')).revision,2);
+    assert.equal((await remove('bundled-place',0)).status,409);
   } finally { db.close(); }
 });

@@ -317,3 +317,6 @@ body:has(.admin-login) .floating-whatsapp {
 .admin-place .admin-delete { color: #9a3228; min-height: 44px; }
 .admin-place .admin-delete:hover { color: #6f2019; }
 .admin-place button:disabled { opacity: .55; cursor: wait; }
+
+.admin-delete-confirm { margin-top: 14px; padding: 14px; border: 1px solid #9a3228; }
+.admin-deleted-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 20px 0; border-bottom: 1px solid var(--line); }

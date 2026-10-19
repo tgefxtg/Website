@@ -4,7 +4,7 @@ import {
   chatGPTSignOutPath,
 } from "@/app/chatgpt-auth";
 import { isOwner } from "@/lib/admin-auth";
-import { getPlaces } from "@/lib/places";
+import { getPlaces, getDeletedPlaces } from "@/lib/places";
 import { AdminPanel } from "@/components/admin/panel";
 export const dynamic = "force-dynamic";
 export const metadata = {
@@ -41,6 +41,7 @@ export default async function Admin() {
   return (
     <AdminPanel
       initialPlaces={await getPlaces()}
+      initialDeletedPlaces={await getDeletedPlaces()}
       ownerName={user.displayName}
       signOutUrl={chatGPTSignOutPath("/admin/")}
     />
