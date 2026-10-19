@@ -18,16 +18,10 @@ import { jsonLd, pageSchema } from "@/lib/seo";
 export const dynamic = "force-dynamic";
 export default async function Home() {
 const destinations = await getPlaces();
-const gallery = [
-  destinations[6],
-  destinations[1],
-  destinations.find(d=>d.slug==='wadi-lajab')!,
-  destinations[4],
-  destinations[12],
-  destinations[22],
-  destinations[2],
-  destinations[19],
-].map((d) => ({
+const gallery = ["rijal-alma", "art-street", "wadi-lajab", "rose-garden", "the-vineyard", "the-summer-gathering", "al-sahab-park", "lavender-park"].flatMap(slug => {
+  const place = destinations.find(d => d.slug === slug);
+  return place ? [place] : [];
+}).map((d) => ({
   src: d.image!,
   alt: d.gallery[0].alt,
   caption: d.id === "07" ? "Rijal Alma" : d.name,

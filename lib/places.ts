@@ -15,6 +15,11 @@ export const getPlaces = cache(async (): Promise<ManagedPlace[]> => {
   );
   for (const row of results) {
     const d = JSON.parse(row.content);
+    // Keep a tombstone so deleting a bundled destination cannot resurrect it.
+    if (d.deleted === true) {
+      merged.delete(d.slug);
+      continue;
+    }
     merged.set(d.slug, { ...d, revision: row.revision });
   }
   return [...merged.values()];

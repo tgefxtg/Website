@@ -3,6 +3,32 @@ import { isOwner, sameOrigin } from "@/lib/admin-auth";
 import { getPlace } from "@/lib/places";
 import { validatePlace } from "@/lib/place-validation";
 import { boundedText } from "@/lib/request-body";
+export async function DELETE(request: Request) {
+  if (!sameOrigin(request) || !(await isOwner()))
+    return Response.json({ error: "Please sign in as the owner." }, { status: 403 });
+  if (!env.DB)
+    return Response.json({ error: "Storage unavailable." }, { status: 503 });
+  try {
+    const { slug, revision } = JSON.parse(await boundedText(request));
+    if (typeof slug !== "string" || !/^[a-z0-9-]{1,100}$/.test(slug) ||
+        !Number.isSafeInteger(revision) || revision < 0)
+      return Response.json({ error: "Invalid place data." }, { status: 400 });
+    const existing = await getPlace(slug);
+    if (!existing) return Response.json({ error: "Place not found." }, { status: 404 });
+    if (existing.revision !== revision)
+      return Response.json({ error: "This place changed in another window. Reload before deleting." }, { status: 409 });
+    // Retain the record and photos for recovery; public reads omit the tombstone.
+    const content = JSON.stringify({ ...existing, deleted: true });
+    const result = revision === 0
+      ? await env.DB.prepare("INSERT OR IGNORE INTO places(slug,content,revision) VALUES(?,?,1)").bind(slug, content).run()
+      : await env.DB.prepare("UPDATE places SET content=?, revision=revision+1 WHERE slug=? AND revision=?").bind(content, slug, revision).run();
+    if (result.meta.changes !== 1)
+      return Response.json({ error: "This place changed in another window. Reload before deleting." }, { status: 409 });
+    return Response.json({ deleted: slug }, { headers: { "Cache-Control": "no-store" } });
+  } catch {
+    return Response.json({ error: "Could not delete this package. Please try again." }, { status: 400 });
+  }
+}
 export async function POST(request: Request) {
   if (!sameOrigin(request))
     return Response.json(

@@ -8,6 +8,7 @@ import {
   Search,
   X,
   LoaderCircle,
+  Trash2,
 } from "lucide-react";
 import { categories } from "@/data/destinations";
 import type { ManagedPlace } from "@/lib/places";
@@ -53,6 +54,35 @@ export function AdminPanel({
     [message, setMessage] = useState(""),
     [dirty, setDirty] = useState(false);
   const formRef = useRef<HTMLElement>(null);
+  const [deleteNotice, setDeleteNotice] = useState("");
+  const [deleteError, setDeleteError] = useState("");
+  const collectionHeading = useRef<HTMLHeadingElement>(null);
+  async function remove(place: ManagedPlace) {
+    if (busy || uploading) return;
+    if (dirty && !window.confirm("Discard your unsaved changes?")) return;
+    if (!window.confirm(`Delete “${place.name}”? This removes the entire place and its package from the website, including the destination page. To remove only the price, use Edit place and clear the price instead.`)) return;
+    setBusy(true);
+    setDeleteError("");
+    setDeleteNotice("");
+    try {
+      const response = await fetch("/api/admin/places", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug: place.slug, revision: place.revision }),
+      });
+      const result = await response.json() as { error?: string };
+      if (!response.ok) throw new Error(result.error || "Could not delete this package.");
+      setPlaces((old) => old.filter((p) => p.slug !== place.slug));
+      setDraft(null);
+      setDirty(false);
+      setDeleteNotice(`${place.name} has been removed from your website.`);
+      collectionHeading.current?.focus();
+    } catch (e) {
+      setDeleteError(e instanceof Error ? e.message : "Could not delete this package.");
+    } finally {
+      setBusy(false);
+    }
+  }
   useEffect(() => {
     if (!dirty) return;
     const warn = (e: BeforeUnloadEvent) => {
@@ -418,7 +448,7 @@ export function AdminPanel({
       )}
       <section className="admin-collection">
         <div className="admin-collection-heading">
-          <h2>Your collection</h2>
+          <h2 ref={collectionHeading} tabIndex={-1}>Your collection</h2>
           <label className="search-field">
             <Search size={18} />
             <input
@@ -429,6 +459,8 @@ export function AdminPanel({
             />
           </label>
         </div>
+        {deleteError && <p role="alert" className="admin-error">{deleteError}</p>}
+        {deleteNotice && <p role="status" className="admin-success">{deleteNotice}</p>}
         <div className="admin-place-grid">
           {places
             .filter((p) =>
@@ -447,13 +479,17 @@ export function AdminPanel({
                       ? `${p.packagePrice.amount} SAR · ${p.packagePrice.unit}`
                       : "Package price on enquiry"}
                   </p>
-                  <button
+                  <div className="admin-place-actions"><button
                     className="text-link"
                     disabled={busy || uploading}
                     onClick={() => edit(p)}
                   >
                     Edit place <ArrowUpRight size={16} />
                   </button>
+                  <button className="text-link admin-delete" disabled={busy || uploading}
+                    aria-label={`Delete package: ${p.name}`} onClick={() => void remove(p)}>
+                    Delete package <Trash2 size={16} />
+                  </button></div>
                 </div>
               </article>
             ))}

@@ -52,7 +52,8 @@ export async function Introduction() {
 }
 export async function FeaturedStories() {
   const destinations = await getPlaces();
-  const stories = [destinations[2], destinations[6], destinations[1]];
+  const stories = ["al-sahab-park", "rijal-alma", "art-street"].map(slug => destinations.find(d => d.slug === slug));
+  if (!stories.some(Boolean)) return null;
   const headings = [
     <>
       <span className="story-title-line">
@@ -99,11 +100,11 @@ export async function FeaturedStories() {
           are <em>felt.</em>
         </h2>
         <span className="stories-intro">
-          Three places to begin.
+          Places to begin.
           <br />A thousand reasons to linger.
         </span>
       </div>
-      {stories.map((d, i) => (
+      {stories.map((d, i) => d ? (
         <article className={`feature-story story-${i}`} key={d.id}>
           <div className="feature-image">
             <Photo
@@ -111,7 +112,7 @@ export async function FeaturedStories() {
               alt={d.gallery[0].alt}
               sizes="(max-width: 800px) 100vw, 58vw"
             />
-            <span className="feature-image-index">0{i + 1} / 03</span>
+            <span className="feature-image-index">0{i + 1}</span>
           </div>
           <div className="feature-story-copy">
             <span className="eyebrow">
@@ -138,7 +139,7 @@ export async function FeaturedStories() {
             </div>
           </div>
         </article>
-      ))}
+      ) : null)}
     </section>
   );
 }
@@ -251,24 +252,24 @@ export async function Experiences() {
             icon: Mountain,
             title: "Above the clouds",
             text: "Mountain air, changing skies, and a little space to breathe.",
-            image: destinations[2].gallery[3].src,
-            link: destinations[2].slug,
+            image: destinations.find(d => d.slug === "al-sahab-park")?.gallery[3]?.src ?? destinations.find(d => d.slug === "al-sahab-park")?.image ?? null,
+            link: destinations.find(d => d.slug === "al-sahab-park")?.slug,
           },
           {
             icon: Landmark,
             title: "Heritage, held close",
             text: "Stone-built villages and art that carries the character of Aseer.",
-            image: destinations[6].image,
-            link: destinations[6].slug,
+            image: destinations.find(d => d.slug === "rijal-alma")?.image ?? null,
+            link: destinations.find(d => d.slug === "rijal-alma")?.slug,
           },
           {
             icon: Leaf,
             title: "The joy of slowing down",
             text: "Leafy paths, fresh fruit, and time together on the farms.",
-            image: destinations[12].image,
-            link: destinations[12].slug,
+            image: destinations.find(d => d.slug === "the-vineyard")?.image ?? null,
+            link: destinations.find(d => d.slug === "the-vineyard")?.slug,
           },
-        ].map((x, i) => (
+        ].filter(x => x.link).map((x, i) => (
           <article key={x.title} className="experience-story" data-reveal>
             <div className="experience-image">
               <Photo
@@ -303,7 +304,7 @@ export async function About() {
     <section id="about" className="section about-section">
       <div className="about-image" data-image-reveal>
         <Photo
-          src={destinations[12].image}
+          src={destinations.find(d => d.slug === "the-vineyard")?.image ?? null}
           alt="Grape clusters growing at The Vineyard"
           sizes="(max-width:800px) 90vw, 40vw"
         />

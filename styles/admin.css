@@ -312,3 +312,8 @@ body:has(.admin-login) .mobile-enquiry,
 body:has(.admin-login) .floating-whatsapp {
   display: none;
 }
+
+.admin-place-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+.admin-place .admin-delete { color: #9a3228; min-height: 44px; }
+.admin-place .admin-delete:hover { color: #6f2019; }
+.admin-place button:disabled { opacity: .55; cursor: wait; }
