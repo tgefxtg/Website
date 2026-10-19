@@ -34,7 +34,7 @@ Canonical origin is the current HTTPS Sites domain. Public content uses self-ref
 - TypeScript passes; six automated tests pass, including owner replacement, old-account denial, anonymous denial and origin checks.
 - Production build passes. Local crawl passes for 33 pages (32 production pages plus one existing local test place), 137 linked resources, unique titles/descriptions, canonical tags, one H1, metadata, parseable JSON-LD, robots/sitemap, real 404 status codes and anonymous API rejection with noindex headers.
 - Production database inspection found no edited place overrides; all 29 original destination records remain. Local test records are not deployed.
-- Authenticated live owner editing cannot be verified without the owner's login. Earlier local CRUD checks passed; this release preserves the API contract.
+- Live owner dashboard access and saving were verified in the existing John Raj session. High City was saved with unchanged fields; the UI confirmed the save. Live upload acceptance was not exercised; local upload checks and live anonymous upload rejection passed.
 - Google Rich Results Test, Search Console verification and sitemap submission have not been completed. JSON-LD parsing does not establish Google rich-result eligibility.
 
 ## Performance measurements
@@ -68,3 +68,9 @@ References: https://developers.google.com/search/docs/essentials/technical ; htt
 ## Final navigation regression fix
 
 Production browser testing uncovered broken Vinext client-side Link prefetch and navigation exports (TypeError). Internal navigation now uses ordinary crawlable anchors, preserving URLs, same-page smooth scrolling, and JavaScript-free navigation. Collection and destination clicks pass after rebuilding, with no new console errors. Mobile menu Escape dismissal restores focus to Open navigation; 390px mobile and 768px tablet destination layouts show no horizontal overflow. Full page navigation replaces speculative RSC prefetch; cinematic animations initialize on each page load.
+
+## Production verification — 2026-10-19
+
+Version 11 deployed successfully from source commit 6572bc90ab516262ef219de5f50283081c4fb2a4. Approved public visitor access is enabled (access revision 4); administrative writes still require the configured owner johnrajj1923@gmail.com. The anonymous production crawl passed all 32 public routes and 135 linked resources, with no failures. It verified unique metadata, canonicals, sitemap, robots, JSON-LD parsing, actual missing-route 404 responses, admin noindex and anonymous POST rejection on both editing/upload endpoints. Raw evidence: tmp/seo-check-live.json. GitHub main received the deployed source. This report's final documentation-only commit records post-publication evidence.
+
+The existing signed-in owner browser session showed John Raj's 29-place dashboard. Saving High City without changing its fields returned 'Saved. Your changes are now live on the website.' This creates an equivalent database override; no content, photos or prices were changed. Screenshot evidence: tmp/qa/seo-owner-save.png. Google Search Console setup remains pending; no account verification token was available.
