@@ -1,0 +1,11 @@
+# Owner sessions and edits stay on the original, authenticated host.
+/admin https://abha-tourist-center.shoneclg.chatgpt.site/admin/ 302!
+/admin/* https://abha-tourist-center.shoneclg.chatgpt.site/admin/:splat 302!
+/signin-with-chatgpt https://abha-tourist-center.shoneclg.chatgpt.site/signin-with-chatgpt 302!
+/signout-with-chatgpt https://abha-tourist-center.shoneclg.chatgpt.site/signout-with-chatgpt 302!
+/callback https://abha-tourist-center.shoneclg.chatgpt.site/admin/ 302!
+# Do not forward administrative API writes through the visitor mirror.
+/api /admin-unavailable.html 404!
+/api/* /admin-unavailable.html 404!
+# Always fetch public pages, scripts and photos from the current published site.
+/* https://abha-tourist-center.shoneclg.chatgpt.site/:splat 200!
