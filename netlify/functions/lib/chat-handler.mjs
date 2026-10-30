@@ -7,6 +7,22 @@ const event = (name, data) =>
   new TextEncoder().encode(`event:${name}\ndata:${JSON.stringify(data)}\n\n`);
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+// Only fixed, whitelisted diagnostics are returned; never reflect Google payloads.
+class GeminiError extends Error {
+  constructor(code,message){super(message);this.code=code;}
+}
+async function providerError(response){
+  let reason;
+  try{const payload=await response.json();reason=payload.error?.details?.find(d=>typeof d.reason==='string')?.reason;}catch{}
+  if(['API_KEY_INVALID','API_KEY_EXPIRED','CONSUMER_INVALID'].includes(reason)||response.status===401)return new GeminiError('gemini_key_invalid','Google rejected the Gemini API key. Replace DOTLINE_GEMINI_API_KEY in Netlify Functions settings and redeploy.');
+  if(reason==='SERVICE_DISABLED')return new GeminiError('gemini_api_disabled','The Generative Language API is disabled for this Google project. Enable it in Google Cloud, then retry.');
+  if(response.status===403)return new GeminiError('gemini_access_denied','Google denied Gemini access (403). Check the API key restrictions and whether its Google project has access to the Generative Language API.');
+  if(response.status===404)return new GeminiError('gemini_model_unavailable','The configured Gemini model is unavailable (404). Set DOTLINE_GEMINI_MODEL to a model supported by your Google AI Studio account, then redeploy.');
+  if(response.status===429)return new GeminiError('gemini_quota','Google reports a Gemini quota or rate limit (429). Check the Google project usage limits and billing, then retry.');
+  if(response.status===400)return new GeminiError('gemini_request_rejected','Google rejected the Gemini request (400). Check the Gemini API key, configured model and Google project settings.');
+  return new GeminiError('gemini_unavailable','Gemini is temporarily unavailable. Please retry shortly.');
+}
+
 async function boundedJson(request) {
   const reader = request.body?.getReader();
   if (!reader) throw Error("empty");
@@ -85,7 +101,7 @@ async function googleStream(response, onText, signal) {
           .join("\n");
         if (!data) continue;
         const payload = JSON.parse(data);
-        if (payload.error) throw Error("provider");
+        if (payload.error) throw new GeminiError("gemini_stream_error","Gemini interrupted its response. Please retry.");
         const candidate = payload.candidates?.[0];
         const text = candidate?.content?.parts
           ?.map((part) => part.text || "")
@@ -99,10 +115,10 @@ async function googleStream(response, onText, signal) {
             candidate?.finishReason,
           )
         )
-          throw Error("blocked");
+          throw new GeminiError("gemini_blocked","Gemini declined this request. Try rephrasing your message.");
       }
     }
-    if (!seenText) throw Error("no_text");
+    if (!seenText) throw new GeminiError("gemini_empty","Gemini returned no visible text. Try a shorter question or check the configured model.");
   } finally {
     await reader.cancel().catch(() => {});
     reader.releaseLock();
@@ -135,9 +151,9 @@ export function createChatHandler({
         "invalid_input",
       );
     }
-    const key = env.DOTLINE_GEMINI_API_KEY;
+    const key = env.DOTLINE_GEMINI_API_KEY?.trim();
     const provider = key ? "gemini" : "mock";
-    const model = env.DOTLINE_GEMINI_MODEL || "gemini-2.5-flash";
+    const model = env.DOTLINE_GEMINI_MODEL?.trim() || "gemini-2.5-flash";
     if (!/^gemini-[a-z0-9.-]{1,80}$/.test(model))
       return json(
         503,
@@ -192,17 +208,12 @@ export function createChatHandler({
                       },
                     ],
                   },
-                  generationConfig: { maxOutputTokens: 2048 },
+                  generationConfig: { maxOutputTokens: 2048, ...(model.startsWith("gemini-2.5-flash")?{thinkingConfig:{thinkingBudget:0}}:{}) },
                 }),
                 signal,
               },
             );
-            if (!response.ok) {
-              await response.body?.cancel().catch(() => {});
-              throw Error(
-                response.status === 429 ? "quota" : "provider_configuration",
-              );
-            }
+            if (!response.ok) throw await providerError(response);
             let size = 0;
             await googleStream(
               response,
@@ -218,14 +229,14 @@ export function createChatHandler({
         } catch (error) {
           if (!cancel.signal.aborted && !request.signal.aborted)
             emit("error", {
-              code: provider === "mock" ? "mock_failure" : "provider_error",
+              code: provider === "mock" ? "mock_failure" : error instanceof GeminiError ? error.code : "provider_error",
               message:
                 provider === "mock" && body.simulateError
                   ? "Simulated provider failure. Your message is saved. Retry to generate a response."
                   : timeout.signal.aborted
                     ? "The AI service timed out. Please retry."
-                    : error.message === "quota"
-                      ? "Gemini is at its usage limit. Please try again later."
+                    : error instanceof GeminiError
+                      ? error.message
                       : "The AI service could not complete this response. Please retry or ask the site owner to check the server configuration.",
             });
         } finally {
