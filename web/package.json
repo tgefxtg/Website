@@ -1,0 +1,40 @@
+{
+  "name": "dotline-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5174",
+    "build": "tsc -b && vite build",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "preview": "vite preview --host 127.0.0.1 --port 5174"
+  },
+  "dependencies": {
+    "@fontsource/dm-sans": "5.2.0",
+    "@fontsource/jetbrains-mono": "5.2.6",
+    "gsap": "3.15.0",
+    "lucide-react": "0.468.0",
+    "react": "19.2.9",
+    "react-dom": "19.2.9",
+    "react-markdown": "10.1.0",
+    "rehype-highlight": "7.0.2",
+    "remark-gfm": "4.0.1"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.11.1",
+    "@playwright/test": "1.58.2",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.0",
+    "@types/node": "24.0.0",
+    "@types/react": "19.2.0",
+    "@types/react-dom": "19.2.0",
+    "@vitejs/plugin-react": "6.0.2",
+    "jsdom": "29.0.0",
+    "prettier": "3.6.2",
+    "prettier-plugin-java": "2.8.0",
+    "typescript": "5.9.3",
+    "vite": "8.0.13",
+    "vitest": "4.1.0"
+  }
+}
